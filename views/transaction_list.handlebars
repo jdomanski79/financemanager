@@ -1,0 +1,25 @@
+<h1 class="text-center">
+  {{title}}
+</h1>
+<main>
+  <table class="striped">
+    <theader>
+      <th>#</th>
+      <th>Data</th>
+      <th>Kwota</th>
+      <th>Kategoria</th>
+      <th>Opis</th>
+      <th>Wprowadzone przez</th>
+    </theader>
+    {{#each transactions}}
+      <tr>
+        <td>{{@index}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.sum}} zł</td>
+        <td>{{this.category.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.createdBy.name}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</main>

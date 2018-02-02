@@ -1,0 +1,47 @@
+<h1 class="text-center">{{title}}</h1>
+
+<form method='post'>
+  <fieldset>
+  <legend>
+    {{title}}
+  </legend>    
+  
+  <div class="input-group vertical">
+    <label for="date">Data</label>
+    <input type="date" name="date" id="date"  autofocus>
+  </div>
+  
+  <div class="input-group vertical">
+    <label for="sum" >Kwota </label>
+    <input type="text" name="sum" id="sum"  value="{{transaction.sum}}">
+  </div>
+  
+  <div class="input-group vertical">
+    <label for="category" >Kategoria </label>
+    <select name="category" id="category">
+       {{#each categories}} 
+       <option value='{{this._id}}'>{{this.name}}</option>
+       {{/each}}
+    </select>
+  </div>
+    
+  <div class="input-group vertical">
+    <label for="description">Opis</label>
+    <input type="text" name="description" id="description"  value="{{transaction.description}}">
+  </div>
+    
+  <button type="submit" class="primary">Zapisz</button>
+</fieldset>
+</form>
+
+{{#if errors}}
+  <ul>
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+
+<!-- 
+  <script src="/addtransaction.js"></script>
+  -->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title> {{appTitle}}</title>
+
+    <!--     MINI css -->
+    
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v2.3.7/dist/mini-default.min.css">
+    
+    <!--     Custom css -->
+<!--     <link rel="stylesheet" href="/style.css"> -->
+  </head>
+  
+  <body>
+    <div class="container col-sm-12 col-md-8 col-md-offset-2">
+      <div class="row">
+        <!-- Main navigation         -->
+        <div class="col-sm-12 col-md-3">
+          <nav class="shadowed">
+            <a class="nav-link" href="/">Home</a>
+            <span>Transakcje</span>
+              <a class="sublink-1" href="/transactions">Lista</a>
+              <a class="sublink-1" href="/transaction/create">Nowa..</a>
+            <a class="nav-link" href="/categories">Kategorie</a>
+            <hr>
+            <span>{{user.name}}</span>
+              <a class="sublink-1" href="/logout">Wyloguj</a>
+          </nav>
+        </div>
+          
+      <!-- main content            -->
+        <div class="col-sm-12 col-md-9 shadowed">
+          {{{body}}}    
+        </div>
+
+      </div>
+    </div>
+    
+<!--     Bootrstaps scripts -->
+  </body>
+</html>
