@@ -30,16 +30,6 @@ exports.index = (req, res, next) => {
         categories: {$push: {name: "$_id.name", sum: "$sum"}}
       }
     },
-   
-    // {
-    //   $project: {
-    //     _id: 0,
-    //     type: 1,
-    //     sum : 1,
-    //     count: 1,
-    //     name: 1
-    //   }
-    // },
        
       (err, found) => {
         console.log('Callback!', found);
