@@ -26,7 +26,6 @@ mongoose.connect(config.mongoURI);
 const db = mongoose.connection;
 //mongoose.set('debug', true);
 
-// TODO add error view
 db.on('error', console.error.bind(console, 'Database connection error!'));
 
 db.on('connected', () => {

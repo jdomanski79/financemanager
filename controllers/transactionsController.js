@@ -50,7 +50,6 @@ exports.list = (req, res, next) => {
     .sort({created: -1})
     .exec( (err, transactions) => {
       if (err) return next(err);
-      console.log("transactions", transactions);
       res.render("transaction_list", {title: "Lista transakcji", transactions: transactions});
   })
   
