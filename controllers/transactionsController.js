@@ -86,7 +86,7 @@ exports.transaction_create_post = [
       sum            : req.body.sum,
       category       : req.body.category,
       description    : req.body.description,
-      createdBy      : req.session.user._id
+      createdBy      : req.session.user.id
     });
     
     if (!errors.isEmpty()) {
