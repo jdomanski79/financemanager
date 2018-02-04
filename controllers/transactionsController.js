@@ -62,7 +62,7 @@ exports.transaction_create_get = (req, res, next) => {
   // console.log(categories);
   Category.find({}, (err, categories)=>{
     if (err) return next(err);
-    res.render('transaction_form', {title: 'Nowa transakcja', categories: categories});
+    res.render('transaction_form', {title: 'Nowa transakcja', categories: categories, date: new Date().toISOString().slice(0,10)});
   });
 };
 

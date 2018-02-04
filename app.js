@@ -24,7 +24,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoURI);
 
 const db = mongoose.connection;
-mongoose.set('debug', true);
+//mongoose.set('debug', true);
 
 // TODO add error view
 db.on('error', console.error.bind(console, 'Database connection error!'));
