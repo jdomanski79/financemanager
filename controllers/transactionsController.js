@@ -28,12 +28,17 @@ exports.index = (req, res, next) => {
         _id: "$_id.type",
         categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
         typeSum : {$sum: "$categorySum"}
+      },
+      $addFields: {
+        "type": {
+          $cond: [{$eq: [$_id, "income"] }, "Wpływy", "Wydatki"]
+        }
       }
     },
        
       (err, found) => {
-        found = found.toObject();
-        found.type = found._id == "income" ? "Wpływ" : "
+        //found = found.toObject();
+        found.type = found._id == "income" ? "Wpływy" : "Wydatki";
         console.log('Callback!', found);
         if (err) return next(err);
         res.render("home", {title: "Strona domowa", data: found});
