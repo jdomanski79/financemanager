@@ -42,8 +42,8 @@ exports.index = (req, res, next) => {
         $group:{
           _id: "$_id.type",
           categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
-          typeSum   : {$sum: "$categorySum"},
-          typeCount : 
+          typeSum    : {$sum: "$categorySum"},
+          count      : {$sum: 1} 
         },
       },
       {
