@@ -20,7 +20,11 @@ exports.login_post = [
         if (!success) return res.render('login', {layout: false, error: "Nieprawidłowe hasło."});
         
         req.session.authenticated = true;
-        req.session.user = {id: user._id, name: user.name};
+        req.session.user = {
+          id  : user._id, 
+          name: user.name, 
+          url : user.url
+        };
         res.redirect('/');
       });
     });
