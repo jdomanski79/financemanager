@@ -8,34 +8,43 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
+  const today = new Date();
   Transaction
     .aggregate(
-  {
-  {$lookup: {
-    from: "categories",
-    localField: "category",
-    foreignField: "_id",
-    as : "categoryDoc"
-    },
-  },
-  {$unwind: "$categoryDoc"},
-  {$group: {
-    _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
-    categorySum: {$sum: "$sum"},
-    }
-  },
-  {$group:{
-    _id: "$_id.type",
-    categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
-  typeSum : {$sum: "$categorySum"}
-},
-},
-{$addFields: {
-  type: {
-    $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-  }
-}
-},
+      {
+        $match: {
+         transactionDate: {$year: "$transactionDate"},
+        }
+      },
+      {
+        $lookup: {
+          from: "categories",
+          localField: "category",
+          foreignField: "_id",
+          as : "categoryDoc"
+        },
+      },
+      {$unwind: "$categoryDoc"},
+      {
+        $group: {
+          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
+          categorySum: {$sum: "$sum"},
+        }
+      },
+      {
+        $group:{
+          _id: "$_id.type",
+          categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
+          typeSum : {$sum: "$categorySum"}
+        },
+      },
+      {
+        $addFields: {
+          type: {
+            $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
+          }
+        }
+      },
        
       (err, found) => {
         //found = found.toObject();
