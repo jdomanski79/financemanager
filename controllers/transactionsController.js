@@ -8,44 +8,50 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
-  const thisYear = new Date().getFullYear();
-  console.log("Mamy rok ", thisYear);
+  const today = new Date();
   Transaction
     .aggregate(
       {
-        $match: {
-          sum : 2
+        $addFields: {
+          year: {$year: "$transactionDate"},
+          month: {$month: "$transactionDate"}
         }
       },
-      // {
-      //   $lookup: {
-      //     from: "categories",
-      //     localField: "category",
-      //     foreignField: "_id",
-      //     as : "categoryDoc"
-      //   },
-      // },
-      // {$unwind: "$categoryDoc"},
-      // {
-      //   $group: {
-      //     _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
-      //     categorySum: {$sum: "$sum"},
-      //   }
-      // },
-      // {
-      //   $group:{
-      //     _id: "$_id.type",
-      //     categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
-      //     typeSum : {$sum: "$categorySum"}
-      //   },
-      // },
-      // {
-      //   $addFields: {
-      //     type: {
-      //       $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-      //     }
-      //   }
-      // },
+      {
+        $match: {
+          year : today.getFullYear(),
+          month: today.getMonth() + 1,
+        }
+      },
+      {
+        $lookup: {
+          from: "categories",
+          localField: "category",
+          foreignField: "_id",
+          as : "categoryDoc"
+        },
+      },
+      {$unwind: "$categoryDoc"},
+      {
+        $group: {
+          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
+          categorySum: {$sum: "$sum"},
+        }
+      },
+      {
+        $group:{
+          _id: "$_id.type",
+          categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
+          typeSum : {$sum: "$categorySum"}
+        },
+      },
+      {
+        $addFields: {
+          type: {
+            $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
+          }
+        }
+      },
        
       (err, found) => {
         //found = found.toObject();
