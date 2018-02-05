@@ -11,7 +11,6 @@ exports.login_post = [
   
   (req, res, next) =>{
     User.findOne({'login': req.body.username}, (err, user) =>{
-      console.log(user);
       if (err) return next(err);
       if (!user) return res.render('login', {layout: false, error: "Nie znaleziono użytkownika"});
       
@@ -21,7 +20,7 @@ exports.login_post = [
         if (!success) return res.render('login', {layout: false, error: "Nieprawidłowe hasło."});
         
         req.session.authenticated = true;
-        req.session.user = {name: user.name};
+        req.session.user = {id: user._id, name: user.name};
         res.redirect('/');
       });
     });
