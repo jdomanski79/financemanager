@@ -12,44 +12,43 @@ exports.index = (req, res, next) => {
   console.log("Mamy rok ", thisYear);
   Transaction
     .aggregate(
-       {
-      // //   $match: {
-      // //     "yearT" : 2018,
-      // //   }
-      // // },
+      {
+        $match: {
+          sum : 2
+        }
+      },
       // {
-        $lookup: {
-          from: "categories",
-          localField: "category",
-          foreignField: "_id",
-          as : "categoryDoc"
-        },
-      },
-      {$unwind: "$categoryDoc"},
-      {
-        $group: {
-          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
-          categorySum: {$sum: "$sum"},
-        }
-      },
-      {
-        $group:{
-          _id: "$_id.type",
-          categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
-          typeSum : {$sum: "$categorySum"}
-        },
-      },
-      {
-        $addFields: {
-          type: {
-            $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-          }
-        }
-      },
+      //   $lookup: {
+      //     from: "categories",
+      //     localField: "category",
+      //     foreignField: "_id",
+      //     as : "categoryDoc"
+      //   },
+      // },
+      // {$unwind: "$categoryDoc"},
+      // {
+      //   $group: {
+      //     _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
+      //     categorySum: {$sum: "$sum"},
+      //   }
+      // },
+      // {
+      //   $group:{
+      //     _id: "$_id.type",
+      //     categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
+      //     typeSum : {$sum: "$categorySum"}
+      //   },
+      // },
+      // {
+      //   $addFields: {
+      //     type: {
+      //       $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
+      //     }
+      //   }
+      // },
        
       (err, found) => {
         //found = found.toObject();
-        found.type = found._id == "income" ? "Wpływy" : "Wydatki";
         console.log('Callback!', found);
         if (err) return next(err);
         res.render("home", {title: "Strona domowa", data: found});
