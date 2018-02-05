@@ -8,16 +8,16 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
-  const thisYear = new Date().getYear();
-  
+  const thisYear = new Date().getFullYear();
+  console.log("Mamy rok ", thisYear);
   Transaction
     .aggregate(
-      {
-        $match: {
-          year : thisYear,
-        }
-      },
-      {
+       {
+      // //   $match: {
+      // //     "yearT" : 2018,
+      // //   }
+      // // },
+      // {
         $lookup: {
           from: "categories",
           localField: "category",

@@ -27,13 +27,7 @@ transactionSchema
 transactionSchema
   .virtual('year')
   .get( function (){
-    return this.transactionDate.getYear();
-});
-
-transactionSchema
-  .virtual('month')
-  .get( function (){
-    return this.transactionDate.getMonth();
+    return this.transactionDate.getFullYear();
 });
 
 
