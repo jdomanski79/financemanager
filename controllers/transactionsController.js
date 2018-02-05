@@ -18,7 +18,6 @@ exports.index = (req, res, next) => {
         },
     },
     {$unwind: "$categoryDoc"},
-    
     {$group: {
         _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
         categorySum: {$sum: "$sum"},
