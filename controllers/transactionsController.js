@@ -23,15 +23,15 @@ exports.index = (req, res, next) => {
         categorySum: {$sum: "$sum"},
         }
       },
-    {
-      $group:{
+    {$group:{
         _id: "$_id.type",
         categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
         typeSum : {$sum: "$categorySum"}
       },
-      $addFields: {
-        "type": {
-          $cond: [{$eq: [$_id, "income"] }, "Wpływy", "Wydatki"]
+    },
+    {$addFields: {
+        type: {
+          $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
         }
       }
     },
