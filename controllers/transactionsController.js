@@ -21,13 +21,14 @@ exports.index = (req, res, next) => {
     
     {$group: {
         _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
-        sum: {$sum: "$sum"},
+        categorySum: {$sum: "$sum"},
         }
       },
     {
       $group:{
         _id: "$_id.type",
-        categories: {$push: {name: "$_id.name", sum: "$sum"}}
+        categories: {$push: {name: "$_id.name", sum: "$categorySum"}},
+        typeSum : {$sum: "$categorySum"}
       }
     },
        
