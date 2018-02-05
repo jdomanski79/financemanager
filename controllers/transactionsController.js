@@ -32,6 +32,8 @@ exports.index = (req, res, next) => {
     },
        
       (err, found) => {
+        found = found.toObject();
+        found.type = found._id == "income" ? "Wpływ" : "
         console.log('Callback!', found);
         if (err) return next(err);
         res.render("home", {title: "Strona domowa", data: found});
