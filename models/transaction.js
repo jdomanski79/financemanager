@@ -24,6 +24,20 @@ transactionSchema
     return this.transactionDate.toDateString();
 });
 
+transactionSchema
+  .virtual('year')
+  .get( function (){
+    return this.transactionDate.getYear();
+});
+
+transactionSchema
+  .virtual('month')
+  .get( function (){
+    return this.transactionDate.getMonth();
+});
+
+
+
 
 
 module.exports = mongoose.model('Transaction', transactionSchema); 

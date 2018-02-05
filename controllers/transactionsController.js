@@ -8,12 +8,13 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
-  const today = new Date();
+  const thisYear = new Date().getYear();
+  
   Transaction
     .aggregate(
       {
         $match: {
-         transactionDate: {$year: "$transactionDate"},
+          year : thisYear,
         }
       },
       {
