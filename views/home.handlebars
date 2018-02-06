@@ -8,20 +8,36 @@
           Bilans miesiąca: {{bilans}} zł
         </h2>  
       </div>
+      
       <div class="col-sm-12 col-md-6">
         <div class="card fluid shadowed">
           <h2 class="section">
-            Wpływy: {{data.incomes[0].total}} zł
+            Wpływy: {{incomes.total}} zł
           </h2>
-<!--           <ul>
-            {{#each data.incomes[0].categories}}
+          <ul>
+            {{#each incomes.categories}}
             <li>
               {{this.name}} - {{this.sum}} zł
             </li>
             {{/each}}
-          </ul> -->
+          </ul>
         </div>
       </div>
-
+      
+      <div class="col-sm-12 col-md-6">
+        <div class="card fluid shadowed">
+          <h2 class="section">
+            Wydatki: {{outcomes.total}} zł
+          </h2>
+          <ul>
+            {{#each outcomes.categories}}
+            <li>
+              {{this.name}} - {{this.sum}} zł
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      
   </div>
 </div>

@@ -22,7 +22,16 @@ exports.index = (req, res, next) => {
       //found = found.toObject();
       console.log('Callback!', found);
       if (err) return next(err);
-      res.render("home", {title: "Strona domowa", data: found, bilans: found.incomes[0].total - found.outcomes[0].total});
+      res.locals.bilans = found.incomes[0].total - found.outcomes[0].total;
+      res.locals.incomes = {
+        total: found.incomes[0].total,
+        categories: found.incomes[0].categories
+      };
+      res.locals.outcomes = {
+        total: found.outcomes[0].total,
+        categories: found.outcomes[0].categories
+      }
+      res.render("home", {title: "Strona domowa"});
     }
   );
 };
