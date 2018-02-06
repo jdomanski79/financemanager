@@ -53,14 +53,6 @@ exports.index = (req, res, next) => {
           }
         }
       },
-    {
-      $group:{
-        _id: "$_id.type",
-        categories: {$push: {name: "$_id.name", sum: "$sum"}}
-      }
-    },
-
-       
       (err, found) => {
         //found = found.toObject();
         //console.log('Callback!', found);
