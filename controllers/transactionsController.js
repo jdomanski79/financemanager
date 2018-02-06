@@ -34,10 +34,7 @@ exports.index = (req, res, next) => {
       {$unwind: "$categoryDoc"},
       {
         $group: {
-          _id: {
-            type: "$categoryDoc.type", 
-            name: "$categoryDoc.name"
-          }, 
+          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
           categorySum: {$sum: "$sum"},
         }
       },
@@ -53,16 +50,24 @@ exports.index = (req, res, next) => {
         $addFields: {
           type: {
             $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-          },
-        },
+          }
+        }
       },
-      (err);
-        res      d[0].typeSum});
+         
+      (err, found) => {
+        //found = found.toObject();
+        //console.log('Callback!', found);
+        if (err) return next(err);
+        res.render("home", {title: "Strona domowa", data: found, bilans: found[1].typeSum - found[0].typeSum});
       }
-    )      // TRANSACTIONS LIST
+    );
+};
+
+// TRANSACTIONS LIST
 exports.list = (req, res, next) => {
   Transaction.find({})
-    .populate('category')      populate('createdBy')
+    .populate('category')      
+    .populate('createdBy')
     .sort({created: -1})
     .exec( (err, transactions) => {
       if (err) return next(err);
