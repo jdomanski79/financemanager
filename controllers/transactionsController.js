@@ -53,14 +53,7 @@ exports.index = (req, res, next) => {
           }
         }
       },
-    {
-      $group:{
-        _id: "$_id.type",
-        categories: {$push: {name: "$_id.name", sum: "$sum"}}
-      }
-    },
-
-       
+         
       (err, found) => {
         //found = found.toObject();
         //console.log('Callback!', found);
@@ -73,7 +66,7 @@ exports.index = (req, res, next) => {
 // TRANSACTIONS LIST
 exports.list = (req, res, next) => {
   Transaction.find({})
-    .populate('category')
+    .populate('category')      
     .populate('createdBy')
     .sort({created: -1})
     .exec( (err, transactions) => {
