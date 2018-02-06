@@ -1,14 +1,19 @@
 <div class="card fluid shadowed">
    <h1 class="section">
-     {{appTitle}} 
-     Witaj {{user.name}}
+     Witaj {{user.name}}!
    </h1>
     <div class="row">
+      <div class="col-sm-12">
+        <h2>
+          Bilans miesiąca: {{bilans}} zł
+        </h2>  
+      </div>
+         
       {{#each data}}
         <div class="col-sm-12 col-md-6">
           <div class="card fluid shadowed">
             <h2 class="section">
-              {{this._id}}
+              {{this.type}}: {{this.typeSum}} zł
             </h2>
             <ul>
               {{#each this.categories}}

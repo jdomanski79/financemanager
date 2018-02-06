@@ -10,9 +10,8 @@ const MongoStore = require('connect-mongo')(session);
 const routes = require('./routes');
 const transactions= require('./routes/transactions');
 const helpers = require('./lib/helpers');
+const config = require('./config')
 
-
-//const config  = require('./config.js'); 
 
 const app = express();
 
@@ -22,10 +21,10 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.MONGO_URI);// || config.mongoURI);
+mongoose.connect(config.mongoURI);
 
 const db = mongoose.connection;
-mongoose.set('debug', true);
+//mongoose.set('debug', true);
 
 // TODO add error view
 db.on('error', console.error.bind(console, 'Database connection error!'));
@@ -36,7 +35,9 @@ db.on('connected', () => {
 
 app.use(session({
   secret: 'fdslfjl343532h;',
-  cookie: {},
+  cookie: {
+    maxAge: 14*24*60*60*1000, //14 days
+  },
   saveUninitialized: false, // don't create session until something stored
   resave: false, //don't save session if unmodified
   store : new MongoStore({mongooseConnection: db})
