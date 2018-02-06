@@ -43,7 +43,6 @@ exports.index = (req, res, next) => {
           _id: "$_id.type",
           categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
           typeSum    : {$sum: "$categorySum"},
-          count      : {$sum: 1}
         },
       },
       {
@@ -131,3 +130,6 @@ exports.transaction_create_post = [
     }
   }
 ]
+
+
+// ==== helper functions ===
