@@ -53,7 +53,6 @@ exports.index = (req, res, next) => {
           }
         }
       },
-         
       (err, found) => {
         //found = found.toObject();
         //console.log('Callback!', found);
