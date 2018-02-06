@@ -8,58 +8,6 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
-<<<<<<< HEAD
-  const today = new Date();
-  Transaction
-    .aggregate(
-      {
-        $addFields: {
-          year: {$year: "$transactionDate"},
-          month: {$month: "$transactionDate"}
-        }
-      },
-      {
-        $match: {
-          year : today.getFullYear(),
-          month: today.getMonth() + 1,
-        }
-      },
-      {
-        $lookup: {
-          from: "categories",
-          localField: "category",
-          foreignField: "_id",
-          as : "categoryDoc"
-        },
-      },
-      {$unwind: "$categoryDoc"},
-      {
-        $group: {
-          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
-          categorySum: {$sum: "$sum"},
-        }
-      },
-      {
-        $group:{
-          _id: "$_id.type",
-          categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
-          typeSum    : {$sum: "$categorySum"},
-          count      : {$sum: 1}
-        },
-      },
-      {
-        $addFields: {
-          type: {
-            $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-          }
-        }
-      },
-      (err, found) => {
-        //found = found.toObject();
-        //console.log('Callback!', found);
-        if (err) return next(err);
-        res.render("home", {title: "Strona domowa", data: found, bilans: found[1].typeSum - found[0].typeSum});
-=======
   const today = new Date();//Date("2018-01-01");
   async.parallel({
     outcomes: function (cb) {
@@ -82,7 +30,6 @@ exports.index = (req, res, next) => {
       res.locals.outcomes = {
         total: found.outcomes[0].total,
         categories: found.outcomes[0].categories
->>>>>>> glitch
       }
       res.render("home", {title: "Strona domowa"});
     }
