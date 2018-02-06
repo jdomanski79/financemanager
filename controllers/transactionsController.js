@@ -56,7 +56,7 @@ exports.index = (req, res, next) => {
         $group: {
           _id   : null,
           bilans: {$sum: "$typeSum"},
-          type  : {$push : {categories: "$categories", sum: "$typeSum", name: "$_id"}},
+          type  : {name: "$_id", $push : {categories: "$categories", sum: "$typeSum" }},
         }
       },
       {
@@ -65,7 +65,7 @@ exports.index = (req, res, next) => {
          
       (err, found) => {
         //found = found.toObject();
-        console.log('Callback!', found[0].type.nam);
+        console.log('Callback!', found[0]);
         if (err) return next(err);
         res.render("home", {title: "Strona domowa", data: found});
       }
