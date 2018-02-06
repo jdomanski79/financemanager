@@ -8,16 +8,23 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
-  const today = new Date();
-  
-  getCategoriesByType(today, "incomes")
-  .exec((err, found) => {
+  const today = new Date(");
+  async.parallel({
+    outcomes: function (cb) {
+      getCategoriesByType(today, "outcome").exec(cb)
+    },
+    
+    incomes : function(cb) {
+      getCategoriesByType(today, "income").exec(cb)
+    }
+  },
+  (err, found) => {
         //found = found.toObject();
         console.log('Callback!', found);
         if (err) return next(err);
         res.render("home", {title: "Strona domowa", data: found});
       }
-    );
+  );
 };
 
 // TRANSACTIONS LIST
@@ -111,31 +118,13 @@ function getCategoriesByType (date, categoryType) {
                 $match: {
                   year : date.getFullYear(),
                   month: date.getMonth() + 1,
-                  "$categoryDoc.type : categoryType     
+                  "categoryDoc.type" : categoryType     
                 }
               },
-              
               {
                 $group: {
-                  _id: {categoryType: "$categoryDoc.type", name: "$categoryDoc.name"}, 
+                  _id: "$categoryDoc.name", 
                   categorySum: {$sum: "$sum"},
                 }
-              },
-              {
-                $group:{
-                  _id: "$_id.categoryType",
-                  categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
-                  typeSum    : {$sum: "$categorySum"},
-                },
-              },
-              {
-                $addFields: {
-                  typeName: {
-                    $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-                  }
-                }
-              },
-              {
-                $sort: {_id: -1}   
               })
 }
