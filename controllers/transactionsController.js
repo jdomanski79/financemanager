@@ -8,7 +8,7 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
-  const today = new Date(");
+  const today = new Date();//Date("2018-01-01");
   async.parallel({
     outcomes: function (cb) {
       getCategoriesByType(today, "outcome").exec(cb)
@@ -19,11 +19,11 @@ exports.index = (req, res, next) => {
     }
   },
   (err, found) => {
-        //found = found.toObject();
-        console.log('Callback!', found);
-        if (err) return next(err);
-        res.render("home", {title: "Strona domowa", data: found});
-      }
+      //found = found.toObject();
+      console.log('Callback!', found);
+      if (err) return next(err);
+      res.render("home", {title: "Strona domowa", data: found, bilans: found.incomes[0].total - found.outcomes[0].total});
+    }
   );
 };
 
@@ -125,6 +125,15 @@ function getCategoriesByType (date, categoryType) {
                 $group: {
                   _id: "$categoryDoc.name", 
                   categorySum: {$sum: "$sum"},
+                },
+              
+              },
+              {
+                $group: {
+                  _id: null,
+                  total: {$sum: "$categorySum"},
+                  categories: {$push: {name: "$_id", sum: "$categorySum"}}
                 }
-              })
+              }
+  )
 }
