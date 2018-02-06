@@ -9,61 +9,9 @@ const async                    = require('async');
 // EXPORTS
 exports.index = (req, res, next) => {
   const today = new Date();
-  Transaction
-    .aggregate(
-      {
-        $addFields: {
-          year: {$year: "$transactionDate"},
-          month: {$month: "$transactionDate"}
-        }
-      },
-      {
-        $match: {
-          year : today.getFullYear(),
-          month: today.getMonth() + 1,
-        }
-      },
-      {
-        $lookup: {
-          from: "categories",
-          localField: "category",
-          foreignField: "_id",
-          as : "categoryDoc"
-        },
-      },
-      {$unwind: "$categoryDoc"},
-      {
-        $group: {
-          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
-          categorySum: {$sum: "$sum"},
-        }
-      },
-      {
-        $group:{
-          _id: "$_id.type",
-          categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
-          typeSum    : {$sum: "$categorySum"},
-        },
-      },
-      {
-        $addFields: {
-          type: {
-            $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-          }
-        }
-      },
-      {
-        $group: {
-          _id   : null,
-          bilans: {$sum: "$typeSum"},
-          type  : {name: "$_id", $push : {categories: "$categories", sum: "$typeSum" }},
-        }
-      },
-      {
-        $sort: {_id: -1}   
-      },
-         
-      (err, found) => {
+  
+  getCategoriesByType(today, "incomes")
+  .exec((err, found) => {
         //found = found.toObject();
         console.log('Callback!', found);
         if (err) return next(err);
@@ -141,58 +89,53 @@ exports.transaction_create_post = [
 
 // ==== helper functions ===
 
-function getCategoriesByType (type, cb) {
-  Transaction
-    .aggregate(
-      {
-        $addFields: {
-          year: {$year: "$transactionDate"},
-          month: {$month: "$transactionDate"}
-        }
-      },
-      {
-        $match: {
-          year : today.getFullYear(),
-          month: today.getMonth() + 1,
-        }
-      },
-      {
-        $lookup: {
-          from: "categories",
-          localField: "category",
-          foreignField: "_id",
-          as : "categoryDoc"
-        },
-      },
-      {$unwind: "$categoryDoc"},
-      {
-        $group: {
-          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
-          categorySum: {$sum: "$sum"},
-        }
-      },
-      {
-        $group:{
-          _id: "$_id.type",
-          categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
-          typeSum    : {$sum: "$categorySum"},
-        },
-      },
-      {
-        $addFields: {
-          type: {
-            $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
-          }
-        }
-      },
-      {
-        $group: {
-          _id   : null,
-          bilans: {$sum: "$typeSum"},
-          type  : {name: "$_id", $push : {categories: "$categories", sum: "$typeSum" }},
-        }
-      },
-      {
-        $sort: {_id: -1}   
-      },
+function getCategoriesByType (date, categoryType) {
+  return Transaction
+            .aggregate(
+              {
+                $addFields: {
+                  year: {$year: "$transactionDate"},
+                  month: {$month: "$transactionDate"}
+                }
+              },
+              {
+                $lookup: {
+                  from: "categories",
+                  localField: "category",
+                  foreignField: "_id",
+                  as : "categoryDoc"
+                },
+              },
+              {$unwind: "$categoryDoc"},          
+              {
+                $match: {
+                  year : date.getFullYear(),
+                  month: date.getMonth() + 1,
+                  "$categoryDoc.type : categoryType     
+                }
+              },
+              
+              {
+                $group: {
+                  _id: {categoryType: "$categoryDoc.type", name: "$categoryDoc.name"}, 
+                  categorySum: {$sum: "$sum"},
+                }
+              },
+              {
+                $group:{
+                  _id: "$_id.categoryType",
+                  categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
+                  typeSum    : {$sum: "$categorySum"},
+                },
+              },
+              {
+                $addFields: {
+                  typeName: {
+                    $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
+                  }
+                }
+              },
+              {
+                $sort: {_id: -1}   
+              })
 }
