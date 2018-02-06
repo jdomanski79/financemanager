@@ -65,7 +65,7 @@ exports.index = (req, res, next) => {
          
       (err, found) => {
         //found = found.toObject();
-        console.log('Callback!', found[0]);
+        console.log('Callback!', found);
         if (err) return next(err);
         res.render("home", {title: "Strona domowa", data: found});
       }
@@ -140,3 +140,59 @@ exports.transaction_create_post = [
 
 
 // ==== helper functions ===
+
+function getCategoriesByType (type, cb) {
+  Transaction
+    .aggregate(
+      {
+        $addFields: {
+          year: {$year: "$transactionDate"},
+          month: {$month: "$transactionDate"}
+        }
+      },
+      {
+        $match: {
+          year : today.getFullYear(),
+          month: today.getMonth() + 1,
+        }
+      },
+      {
+        $lookup: {
+          from: "categories",
+          localField: "category",
+          foreignField: "_id",
+          as : "categoryDoc"
+        },
+      },
+      {$unwind: "$categoryDoc"},
+      {
+        $group: {
+          _id: {type: "$categoryDoc.type", name: "$categoryDoc.name"}, 
+          categorySum: {$sum: "$sum"},
+        }
+      },
+      {
+        $group:{
+          _id: "$_id.type",
+          categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
+          typeSum    : {$sum: "$categorySum"},
+        },
+      },
+      {
+        $addFields: {
+          type: {
+            $cond: [{$eq: ["$_id", "income"] }, "Wpływy", "Wydatki"]
+          }
+        }
+      },
+      {
+        $group: {
+          _id   : null,
+          bilans: {$sum: "$typeSum"},
+          type  : {name: "$_id", $push : {categories: "$categories", sum: "$typeSum" }},
+        }
+      },
+      {
+        $sort: {_id: -1}   
+      },
+}
