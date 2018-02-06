@@ -35,7 +35,9 @@ db.on('connected', () => {
 
 app.use(session({
   secret: 'fdslfjl343532h;',
-  cookie: {},
+  cookie: {
+    maxAge: 14*24*60*60*1000, //14 days
+  },
   saveUninitialized: false, // don't create session until something stored
   resave: false, //don't save session if unmodified
   store : new MongoStore({mongooseConnection: db})

@@ -43,7 +43,7 @@ exports.index = (req, res, next) => {
           _id: "$_id.type",
           categories : {$push: {name: "$_id.name", sum: "$categorySum"}},
           typeSum    : {$sum: "$categorySum"},
-          count      : {$sum: 1} 
+          count      : {$sum: 1}
         },
       },
       {
@@ -56,16 +56,13 @@ exports.index = (req, res, next) => {
        
       (err, found) => {
         //found = found.toObject();
-        console.log('Callback!', found);
+        //console.log('Callback!', found);
         if (err) return next(err);
-        res.render("home", {title: "Strona domowa", data: found});
+        res.render("home", {title: "Strona domowa", data: found, bilans: found[1].typeSum - found[0].typeSum});
       }
     );
-  
-    
-  
-  //res.render("home", {message: "STRONA DOMOWA"});
 };
+
 // TRANSACTIONS LIST
 exports.list = (req, res, next) => {
   Transaction.find({})
@@ -74,7 +71,7 @@ exports.list = (req, res, next) => {
     .sort({created: -1})
     .exec( (err, transactions) => {
       if (err) return next(err);
-      console.log("transactions", transactions);
+      //console.log("transactions", transactions);
       res.render("transaction_list", {title: "Lista transakcji", transactions: transactions});
   })
   
