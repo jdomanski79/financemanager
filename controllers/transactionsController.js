@@ -8,6 +8,7 @@ const async                    = require('async');
 
 // EXPORTS
 exports.index = (req, res, next) => {
+<<<<<<< HEAD
   const today = new Date();
   Transaction
     .aggregate(
@@ -58,8 +59,34 @@ exports.index = (req, res, next) => {
         //console.log('Callback!', found);
         if (err) return next(err);
         res.render("home", {title: "Strona domowa", data: found, bilans: found[1].typeSum - found[0].typeSum});
+=======
+  const today = new Date();//Date("2018-01-01");
+  async.parallel({
+    outcomes: function (cb) {
+      getCategoriesByType(today, "outcome").exec(cb)
+    },
+    
+    incomes : function(cb) {
+      getCategoriesByType(today, "income").exec(cb)
+    }
+  },
+  (err, found) => {
+      //found = found.toObject();
+      console.log('Callback!', found);
+      if (err) return next(err);
+      res.locals.bilans = found.incomes[0].total - found.outcomes[0].total;
+      res.locals.incomes = {
+        total: found.incomes[0].total,
+        categories: found.incomes[0].categories
+      };
+      res.locals.outcomes = {
+        total: found.outcomes[0].total,
+        categories: found.outcomes[0].categories
+>>>>>>> glitch
       }
-    );
+      res.render("home", {title: "Strona domowa"});
+    }
+  );
 };
 
 // TRANSACTIONS LIST
@@ -127,3 +154,48 @@ exports.transaction_create_post = [
     }
   }
 ]
+
+
+// ==== helper functions ===
+
+function getCategoriesByType (date, categoryType) {
+  return Transaction
+            .aggregate(
+              {
+                $addFields: {
+                  year: {$year: "$transactionDate"},
+                  month: {$month: "$transactionDate"}
+                }
+              },
+              {
+                $lookup: {
+                  from: "categories",
+                  localField: "category",
+                  foreignField: "_id",
+                  as : "categoryDoc"
+                },
+              },
+              {$unwind: "$categoryDoc"},          
+              {
+                $match: {
+                  year : date.getFullYear(),
+                  month: date.getMonth() + 1,
+                  "categoryDoc.type" : categoryType     
+                }
+              },
+              {
+                $group: {
+                  _id: "$categoryDoc.name", 
+                  categorySum: {$sum: "$sum"},
+                },
+              
+              },
+              {
+                $group: {
+                  _id: null,
+                  total: {$sum: "$categorySum"},
+                  categories: {$push: {name: "$_id", sum: "$categorySum"}}
+                }
+              }
+  )
+}
