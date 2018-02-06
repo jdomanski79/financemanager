@@ -23,7 +23,6 @@ exports.login_post = [
         req.session.user = {
           _id  : user._id, 
           name: user.name, 
-          url : user.url
         };
         res.redirect('/');
       });
