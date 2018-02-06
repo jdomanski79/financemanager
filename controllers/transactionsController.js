@@ -53,11 +53,7 @@ exports.index = (req, res, next) => {
           }
         }
       },
-       
-      (err, found) => {
-        //found = found.toObject();
-        //console.log('Callback!', found);
-        if (err) return next(err);
+r) return next(err);
         res.render("home", {title: "Strona domowa", data: found, bilans: found[1].typeSum - found[0].typeSum});
       }
     );
