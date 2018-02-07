@@ -17,7 +17,7 @@ module.exports = router;
 router.all('*', (req, res, next) =>{
   if (req.session && req.session.authenticated){
     res.locals.user = req.session.user;
-    console.log("Session id: ", req.session.id);
+    //console.log("Session id: ", req.session.id);
     return next();
   }
   res.redirect('/login');
@@ -26,6 +26,13 @@ router.all('*', (req, res, next) =>{
 router.route('/logout')
   .get(userController.logout_get)
   .post(userController.logout_post);
+
+
+// ================ DB Conversions - temporary
+router.get('/db/convert', (req, res) => {
+  require('../lib/dbConvert')();
+  res.redirect('/transactions');
+});
 
 
 // GET home page

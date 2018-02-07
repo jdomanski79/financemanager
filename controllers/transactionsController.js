@@ -20,6 +20,7 @@ exports.index = (req, res, next) => {
   },
   (err, found) => {
       //found = found.toObject();
+<<<<<<< HEAD
       console.log('Callback!', found);
       if (err) return next(err);
       res.locals.bilans = found.incomes[0].total - found.outcomes[0].total;
@@ -29,6 +30,16 @@ exports.index = (req, res, next) => {
       };
       res.locals.outcomes = {
         total: found.outcomes[0].total,
+=======
+      if (err) return next(err);
+      res.locals.bilans = found.incomes[0].total - found.outcomes[0].total;
+      res.locals.incomes = {
+        total: found.incomes[0].total.toFixed(2),
+        categories: found.incomes[0].categories
+      };
+      res.locals.outcomes = {
+        total: found.outcomes[0].total.toFixed(2),
+>>>>>>> glitch
         categories: found.outcomes[0].categories
       }
       res.render("home", {title: "Strona domowa"});
@@ -145,4 +156,8 @@ function getCategoriesByType (date, categoryType) {
                 }
               }
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> glitch

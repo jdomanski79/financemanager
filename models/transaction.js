@@ -7,7 +7,7 @@ const transactionSchema = new Schema({
   created        : { type: Date, default: Date.now},
   transactionDate: Date,
   category       : { type: Schema.Types.ObjectId, ref: "Category" },// required: true},
-  sum            : Number,
+  sum            : {type: Number},
   description    : String,
   createdBy      : {type: Schema.Types.ObjectId, ref: "User"}
 });
