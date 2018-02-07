@@ -17,20 +17,32 @@ exports.index = (req, res, next) => {
     incomes : function(cb) {
       getCategoriesByType(today, "income").exec(cb)
     }
-  },
-  (err, found) => {
-      //found = found.toObject();
-     if (err) return next(err);
-      res.locals.bilans = found.incomes[0].total - found.outcomes[0].total;
-      res.locals.incomes = {
-        total: found.incomes[0].total.toFixed(2),
-        categories: found.incomes[0].categories
-      };
-      res.locals.outcomes = {
-        total: found.outcomes[0].total.toFixed(2),
-        categories: found.outcomes[0].categories
+    }, (err, found) => {
+      if (err) return next(err);
+      
+    
+      
+      if (found.incomes.length >0){
+        res.locals.incomes = {
+          total: found.incomes[0].total.toFixed(2),
+          categories: found.incomes[0].categories.map(c => ({name: c.name, sum: c.sum.toFixed(2)}))
+        };
+      } else {
+        res.locals.incomes = {total : 0}
       }
-      res.render("home", {title: "Strona domowa"});
+      
+    if (found.outcomes.length > 0) {
+        res.locals.outcomes = {
+          total: found.outcomes[0].total.toFixed(2),
+          categories: found.outcomes[0].categories.map(c => ({name: c.name, sum: c.sum.toFixed(2)}))
+        }
+      } else {
+        res.locals.outcomes = {total : 0}
+      }
+    
+      res.locals.bilans = (res.locals.incomes.total - res.locals.outcomes.total).toFixed(2);
+      
+    res.render("home", {title: "Strona domowa"});
     }
   );
 };
@@ -75,11 +87,11 @@ exports.transaction_create_post = [
     const errors = validationResult(req);
     
     const transaction = new Transaction({
-      transactionDate: req.body.date,
-      sum            : req.body.sum,
-      category       : req.body.category,
-      description    : req.body.description,
-      createdBy      : req.session.user._id
+      date        : req.body.date,
+      sum         : req.body.sum,
+      category    : req.body.category,
+      description : req.body.description,
+      createdBy   : req.session.user._id
     });
     
     if (!errors.isEmpty()) {
@@ -109,8 +121,9 @@ function getCategoriesByType (date, categoryType) {
             .aggregate(
               {
                 $addFields: {
-                  year: {$year: "$transactionDate"},
-                  month: {$month: "$transactionDate"}
+                 year: {$year: "$date"},
+                  month: {$month: "$date"},
+                  sum  : {$multiply: ["$sum", 0.01]}
                 }
               },
               {
