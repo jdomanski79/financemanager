@@ -17,7 +17,7 @@ module.exports = router;
 router.all('*', (req, res, next) =>{
   if (req.session && req.session.authenticated){
     res.locals.user = req.session.user;
-    console.log("Session id: ", req.session.id);
+    //console.log("Session id: ", req.session.id);
     return next();
   }
   res.redirect('/login');

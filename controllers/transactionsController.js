@@ -20,7 +20,6 @@ exports.index = (req, res, next) => {
   },
   (err, found) => {
       //found = found.toObject();
-      console.log('Callback!', found);
       if (err) return next(err);
       res.locals.bilans = found.incomes[0].total - found.outcomes[0].total;
       res.locals.incomes = {
