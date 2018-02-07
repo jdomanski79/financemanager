@@ -28,6 +28,13 @@ router.route('/logout')
   .post(userController.logout_post);
 
 
+// ================ DB Conversions - temporary
+router.get('/db/convert', (req, res) => {
+  require('../lib/dbConvert')();
+  res.redirect('/transactions');
+});
+
+
 // GET home page
 router.get('/', transactionController.index);
 

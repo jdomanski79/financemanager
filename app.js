@@ -15,7 +15,7 @@ const config = require('./config')
 
 const app = express();
 
-const convert = require('./lib/dbConvert')();
+
 
 // DATABASE CONNECTION
 //=======================
