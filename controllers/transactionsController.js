@@ -19,7 +19,6 @@ exports.index = (req, res, next) => {
     }
   },
   (err, found) => {
-      //found = found.toObject();
       if (err) return next(err);
       res.locals.bilans = found.incomes[0].total - found.outcomes[0].total;
       res.locals.incomes = {
@@ -110,7 +109,8 @@ function getCategoriesByType (date, categoryType) {
               {
                 $addFields: {
                   year: {$year: "$transactionDate"},
-                  month: {$month: "$transactionDate"}
+                  month: {$month: "$transactionDate"},
+                  sum  : {$multiply: ["$sum", 0.01]}
                 }
               },
               {
