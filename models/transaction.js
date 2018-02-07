@@ -5,9 +5,9 @@ const Schema   = mongoose.Schema;
 
 const transactionSchema = new Schema({
   created        : { type: Date, default: Date.now},
-  date           : {type: Date, get: date => date.toDateString()},
+  date           : { type: Date, get: date => date.toDateString()},
   category       : { type: Schema.Types.ObjectId, ref: "Category" },// required: true},
-  sum            : {type: Number},
+  sum            : { type: Number},
   description    : String,
   createdBy      : {type: Schema.Types.ObjectId, ref: "User"}
 });
