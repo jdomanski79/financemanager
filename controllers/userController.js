@@ -21,9 +21,8 @@ exports.login_post = [
         
         req.session.authenticated = true;
         req.session.user = {
-          id  : user._id, 
+          _id  : user._id, 
           name: user.name, 
-          url : user.url
         };
         res.redirect('/');
       });

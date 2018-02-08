@@ -15,6 +15,8 @@ const config = require('./config')
 
 const app = express();
 
+
+
 // DATABASE CONNECTION
 //=======================
 
@@ -24,7 +26,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoURI);
 
 const db = mongoose.connection;
-//mongoose.set('debug', true);
+mongoose.set('debug', true);
 
 db.on('error', console.error.bind(console, 'Database connection error!'));
 
@@ -34,7 +36,9 @@ db.on('connected', () => {
 
 app.use(session({
   secret: 'fdslfjl343532h;',
-  cookie: {},
+  cookie: {
+    maxAge: 2*24*60*60*1000, //14 days
+  },
   saveUninitialized: false, // don't create session until something stored
   resave: false, //don't save session if unmodified
   store : new MongoStore({mongooseConnection: db})

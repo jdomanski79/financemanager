@@ -5,9 +5,9 @@ const Schema   = mongoose.Schema;
 
 const transactionSchema = new Schema({
   created        : { type: Date, default: Date.now},
-  transactionDate: Date,
+  date           : { type: Date, get: date => date.toDateString(), set: date => date},
   category       : { type: Schema.Types.ObjectId, ref: "Category" },// required: true},
-  sum            : Number,
+  sum            : { type: Number, get: sum => sum/100, set: sum => sum * 100},
   description    : String,
   createdBy      : {type: Schema.Types.ObjectId, ref: "User"}
 });
@@ -17,13 +17,6 @@ transactionSchema
   .get(function (){
     return '/transaction/'+ this._id;
   });
-
-transactionSchema
-  .virtual('date')
-  .get( function (){
-    return this.transactionDate.toDateString();
-});
-
 
 
 module.exports = mongoose.model('Transaction', transactionSchema); 

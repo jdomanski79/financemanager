@@ -3,21 +3,49 @@
      Witaj {{user.name}}!
    </h1>
     <div class="row">
-      {{#each data}}
-        <div class="col-sm-12 col-md-6">
-          <div class="card fluid shadowed">
-            <h2 class="section">
-              {{this._id}}
-            </h2>
-            <ul>
-              {{#each this.categories}}
-              <li>
-                {{this.name}} - {{this.sum}} zł
-              </li>
-              {{/each}}
-            </ul>
+      <div class="col-sm-12">
+        <h2>
+          Bilans miesiąca: {{bilans}} zł
+        </h2>  
+      </div>
+      
+      <div class="col-sm-12 col-md-6">
+        <div class="card fluid shadowed">
+          <h2 class="section">
+            Wpływy: {{incomes.total}} zł
+          </h2>
+          {{#each incomes.categories}}
+          <div class="row">
+            <div class="col-sm" style="text-align: right">
+              {{this.name}}:                  
+            </div>
+            <div class="col-sm" style="text-align: right">
+              {{this.sum}} zł  
+            </div>
           </div>
+
+        {{/each}}
         </div>
-      {{/each}}
+      </div>
+      
+      <div class="col-sm-12 col-md-6">
+        <div class="card fluid shadowed">
+          <h2 class="section">
+            Wydatki: {{outcomes.total}} zł
+          </h2>
+          
+            {{#each outcomes.categories}}
+            <div class="row">
+              <div class="col-sm" style="text-align: right">
+                {{this.name}}:                  
+              </div>
+              <div class="col-sm" style="text-align: right">
+                {{this.sum}} zł  
+              </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      
   </div>
 </div>
