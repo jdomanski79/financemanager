@@ -53,11 +53,12 @@ exports.list = (req, res, next) => {
     .populate('category', 'name')      
     .populate('createdBy', 'name')
     .sort({created: -1})
-    .select('date sum')
+    .select('date sum description')
     .exec( (err, transactions) => {
       if (err) return next(err);
-      console.log("transactions", transactions);
-      res.render("transaction_list", {title: "Lista transakcji", transactions: transactions});
+      res.locals.transactions = transactions.map(trans => {  trans.toObject(); trans.sum = trans.sum.toFixed(2); trans.new= "hello"; console.log('arrow', trans); return trans});
+      console.log(res.locals.transactions);
+      res.render("transaction_list", {title: "Lista transakcji"});
   })
   
 };
