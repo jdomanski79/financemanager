@@ -17,28 +17,26 @@ exports.index = (req, res, next) => {
     incomes : function(cb) {
       getCategoriesByType(today, "income").exec(cb)
     }
-  }, (err, found) => {
+    }, (err, found) => {
       if (err) return next(err);
-      
-    
       
       if (found.incomes.length >0){
         res.locals.incomes = {
           total: found.incomes[0].total.toFixed(2),
           categories: found.incomes[0].categories.map(c => ({name: c.name, sum: c.sum.toFixed(2)}))
-        };
+        }
       } else {
         res.locals.incomes = {total : 0}
-      }
+      };
       
-    if (found.outcomes.length > 0) {
+      if (found.outcomes.length > 0) {
         res.locals.outcomes = {
           total: found.outcomes[0].total.toFixed(2),
           categories: found.outcomes[0].categories.map(c => ({name: c.name, sum: c.sum.toFixed(2)}))
         }
       } else {
         res.locals.outcomes = {total : 0}
-      }
+      };
     
       res.locals.bilans = (res.locals.incomes.total - res.locals.outcomes.total).toFixed(2);
       
@@ -56,7 +54,7 @@ exports.list = (req, res, next) => {
     .select('date sum description')
     .exec( (err, transactions) => {
       if (err) return next(err);
-      res.locals.transactions = transactions;
+      res.locals.transactions = transactions.map(trans => {trans = trans.toObject(); trans.sum = trans.sum.toFixed(2); trans.date = trans.date.toDateString(); return trans});
       res.render("transaction_list", {title: "Lista transakcji"});
   })
   
