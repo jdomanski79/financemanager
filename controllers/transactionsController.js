@@ -147,7 +147,9 @@ function getCategoriesByType (date, categoryType) {
                   _id: "$categoryDoc.name", 
                   categorySum: {$sum: "$sum"},
                 },
-              
+              },
+              {
+                $sort: {categorySum: -1}
               },
               {
                 $group: {
