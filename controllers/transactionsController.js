@@ -50,12 +50,13 @@ exports.index = (req, res, next) => {
 // TRANSACTIONS LIST
 exports.list = (req, res, next) => {
   Transaction.find({})
-    .populate('category')      
-    .populate('createdBy')
+    .populate('category', 'name')      
+    .populate('createdBy', 'name')
     .sort({created: -1})
+    .select('date sum')
     .exec( (err, transactions) => {
       if (err) return next(err);
-      //console.log("transactions", transactions);
+      console.log("transactions", transactions);
       res.render("transaction_list", {title: "Lista transakcji", transactions: transactions});
   })
   

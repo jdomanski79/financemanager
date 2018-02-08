@@ -38,7 +38,7 @@ db.on('connected', () => {
 app.use(session({
   secret: 'fdslfjl343532h;',
   cookie: {
-    maxAge: 14*24*60*60*1000, //14 days
+    maxAge: 2*24*60*60*1000, //14 days
   },
   saveUninitialized: false, // don't create session until something stored
   resave: false, //don't save session if unmodified
