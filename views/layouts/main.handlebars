@@ -8,36 +8,32 @@
 
     <!--     MINI css -->
     
-    <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v2.3.7/dist/mini-default.min.css">
-    
+   <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v2.3.7/dist/mini-default.min.css">
+   -->
     <!--     Custom css -->
-<!--     <link rel="stylesheet" href="/style.css"> -->
+   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+   <link rel="stylesheet" href="/style.css"> 
   </head>
   
   <body>
-    <div class="container col-sm-12 col-md-8 col-md-offset-2">
-      <div class="row">
+    <div class="container">
         <!-- Main navigation         -->
-        <div class="col-sm-12 col-md-3">
-          <nav class="shadowed">
-            <a class="nav-link" href="/">Home</a>
-            <span>Transakcje</span>
-            <hr>
-              <a class="sublink-1" href="/transactions">Lista</a>
-              <a class="sublink-1" href="/transaction/create">Nowa..</a>
-            <a class="nav-link" href="/categories">Kategorie</a>
-            <hr>
-            <span>{{user.name}}</span>
-              <a class="sublink-1" href="/logout">Wyloguj</a>
-          </nav>
-        </div>
+        <nav class="column">
+          <ul>
+            <li><a class="" href="/"><i class="fa fa-home"></i></a></li> 
+            <li><a class="" href="/transactions"><i class="fa fa-list"></i></a></li>
+            <li> <a class="" href="/transaction/create"><i class="fa fa-plus"></i></a></li>
+            <li><a class="" href="/categories">Kategorie</a></li>
+            <li><i class="far fa-user"></i>{{user.name}}</li>
+            <li>  <a class="sublink-1" href="/logout">Wyloguj</a></li>
+          </ul>
+        </nav>
           
       <!-- main content            -->
-        <div class="col-sm-12 col-md-9 shadowed">
+        <div class="">
           {{{body}}}    
         </div>
 
-      </div>
     </div>
     
 <!--     Bootrstaps scripts -->

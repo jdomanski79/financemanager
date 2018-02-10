@@ -1,8 +1,12 @@
 /* GRID  */
 
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
   max-width: 1200px;
-  margin: 0 auto;
 }
 .row {
   display: flex;
@@ -28,14 +32,14 @@
 /*  STYLE */
 /* Main side navigation */
 nav {
-  order: -1;
-  width: 200px;
-  margin-top: 20px;
+  width: 100%;
 }
-nav a {
-  display: block;
-  text-decoration: none;
-  padding-left: 10px;
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0px;
 }
 nav a:hover {
   background-color: lightyellow;
@@ -43,27 +47,22 @@ nav a:hover {
 /* table styling*/
 table {
   border-collapse: collapse;
-}
-#transactions {
   width: 100%;
 }
-#transactions td,
-#transactions th,
-.categories-table td,
-.categories-table th {
+td, th,
   border: 1px solid #ddd;
   padding: 8px;
 }
-#transactions tr:nth-child(even){
+tr:nth-child(even){
   background-color: #f2f2f2;
 }
-#transactions td{
+td{
   text-align: center;
 }
-#transactions td:nth-child(3){
+td:nth-child(3){
   text-align: right;
 }
-#transactions tr:hover {
+tr:hover {
   background-color: #ddd;
 }
 label{
