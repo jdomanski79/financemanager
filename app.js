@@ -23,7 +23,7 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect(config.mongoURI);
+mongoose.connect(config.mongoURI, {useMongoClient: true});
 
 const db = mongoose.connection;
 mongoose.set('debug', true);
@@ -35,7 +35,7 @@ db.on('connected', () => {
 })
 
 app.use(session({
-  secret: 'fdslfjl343532h;',
+  secret: config.sessionSecret,
   cookie: {
     maxAge: 2*24*60*60*1000, //14 days
   },

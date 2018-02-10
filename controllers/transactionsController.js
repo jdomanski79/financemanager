@@ -54,7 +54,8 @@ exports.list = (req, res, next) => {
     .select('date sum description')
     .exec( (err, transactions) => {
       if (err) return next(err);
-     res.locals.transactions = transactions.map(trans => {trans = trans.toObject(); trans.sum = trans.sum.toFixed(2); trans.date = trans.date.toDateString(); return trans});
+     res.locals.transactions = transactions;      
+//res.locals.transactions = transactions.map(trans => {trans = trans.toObject(); trans.sum = trans.sum.toFixed(2); trans.date = trans.date.toDateString(); return trans});
       res.render("transaction_list", {title: "Lista transakcji"});
   })
   
