@@ -14,17 +14,13 @@
           <h2 class="section">
             Wpływy: {{incomes.total}} zł
           </h2>
-          {{#each incomes.categories}}
-          <div class="row">
-            <div class="col-sm" style="text-align: right">
-              {{this.name}}:                  
-            </div>
-            <div class="col-sm" style="text-align: right">
-              {{this.sum}} zł  
-            </div>
-          </div>
-
-        {{/each}}
+         <ul>
+            {{#each incomes.categories}}
+            <li>
+              {{this.name}} - {{this.sum}} zł
+            </li>
+            {{/each}}
+          </ul>
         </div>
       </div>
       
@@ -33,17 +29,13 @@
           <h2 class="section">
             Wydatki: {{outcomes.total}} zł
           </h2>
-          
+         <ul>
             {{#each outcomes.categories}}
-            <div class="row">
-              <div class="col-sm" style="text-align: right">
-                {{this.name}}:                  
-              </div>
-              <div class="col-sm" style="text-align: right">
-                {{this.sum}} zł  
-              </div>
-          </div>
-          {{/each}}
+            <li>
+              {{this.name}} - {{this.sum}} zł
+            </li>
+            {{/each}}
+          </ul>
         </div>
       </div>
       

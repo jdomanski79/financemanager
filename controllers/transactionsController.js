@@ -17,7 +17,7 @@ exports.index = (req, res, next) => {
     incomes : function(cb) {
       getCategoriesByType(today, "income").exec(cb)
     }
-    }, (err, found) => {
+  }, (err, found) => {
       if (err) return next(err);
       
       if (found.incomes.length >0){
@@ -41,7 +41,7 @@ exports.index = (req, res, next) => {
       res.locals.bilans = (res.locals.incomes.total - res.locals.outcomes.total).toFixed(2);
       
     res.render("home", {title: "Strona domowa"});
-    }
+   }
   );
 };
 
@@ -50,7 +50,7 @@ exports.list = (req, res, next) => {
   Transaction.find({})
     .populate('category', 'name')      
     .populate('createdBy', 'name')
-    .sort({created: -1})
+   .sort({created: -1})
     .select('date sum description')
     .exec( (err, transactions) => {
       if (err) return next(err);
@@ -124,7 +124,7 @@ function getCategoriesByType (date, categoryType) {
                   year: {$year: "$date"},
                   month: {$month: "$date"},
                   sum  : {$multiply: ["$sum", 0.01]}
-                }
+               }
               },
               {
                 $lookup: {
