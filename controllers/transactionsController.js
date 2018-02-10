@@ -19,8 +19,7 @@ exports.index = (req, res, next) => {
     }
   }, (err, found) => {
       if (err) return next(err);
-      
-      if (found.incomes.length >0){
+     if (found.incomes.length >0){
         res.locals.incomes = {
           total: found.incomes[0].total.toFixed(2),
           categories: found.incomes[0].categories.map(c => ({name: c.name, sum: c.sum.toFixed(2)}))
@@ -30,14 +29,14 @@ exports.index = (req, res, next) => {
       };
       
       if (found.outcomes.length > 0) {
-        res.locals.outcomes = {
+       res.locals.outcomes = {
           total: found.outcomes[0].total.toFixed(2),
           categories: found.outcomes[0].categories.map(c => ({name: c.name, sum: c.sum.toFixed(2)}))
         }
       } else {
         res.locals.outcomes = {total : 0}
       };
-    
+   
       res.locals.bilans = (res.locals.incomes.total - res.locals.outcomes.total).toFixed(2);
       
     res.render("home", {title: "Strona domowa"});
@@ -121,10 +120,10 @@ function getCategoriesByType (date, categoryType) {
             .aggregate(
               {
                 $addFields: {
-                  year: {$year: "$date"},
-                  month: {$month: "$date"},
-                  sum  : {$multiply: ["$sum", 0.01]}
-               }
+                  year  : {$year: "$date"},
+                  month : {$month: "$date"},
+                  sum   : {$multiply: ["$sum", 0.01]}
+                }
               },
               {
                 $lookup: {
