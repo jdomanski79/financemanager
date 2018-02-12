@@ -2,15 +2,17 @@
   {{title}}
 </h1>
 <main>
-  <table class="striped">
-    <theader>
-      <th>#</th>
-      <th>Data</th>
-      <th>Kwota</th>
-      <th>Kategoria</th>
-      <th>Opis</th>
-      <th>Wprowadzone przez</th>
-    </theader>
+<table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Data</th>
+        <th>Kwota</th>
+        <th>Kategoria</th>
+        <th>Opis</th>
+        <th>Wprowadzone przez</th>
+      </tr>
+    </thead>
     {{#each transactions}}
       <tr>
         <td>{{@index}}</td>

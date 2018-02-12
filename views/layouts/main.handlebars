@@ -11,31 +11,31 @@
    <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v2.3.7/dist/mini-default.min.css">
    -->
     <!--     Custom css -->
-   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
    <link rel="stylesheet" href="/style.css"> 
   </head>
   
   <body>
     <div class="container">
         <!-- Main navigation         -->
-        <nav class="column">
+        <nav>
           <ul>
-            <li><a class="" href="/"><i class="fa fa-home"></i></a></li> 
-            <li><a class="" href="/transactions"><i class="fa fa-list"></i></a></li>
-            <li> <a class="" href="/transaction/create"><i class="fa fa-plus"></i></a></li>
+            <li><a class="" href="/"><i class="fa fa-home"></i> Home</a></li> 
+            <li><a class="" href="/transactions"><i class="fa fa-list"></i> Statystyki</a></li>
+            <li><a class="" href="/transaction/create"><i class="fa fa-plus"></i> Nowa..</a></li>
             <li><a class="" href="/categories">Kategorie</a></li>
-            <li><i class="far fa-user"></i>{{user.name}}</li>
-            <li>  <a class="sublink-1" href="/logout">Wyloguj</a></li>
+            <li class="nav__user"><i class="far fa-user"></i> {{user.name}}</li>
+            <li> <a class="sublink-1" href="/logout">Wyloguj</a></li>
           </ul>
         </nav>
           
       <!-- main content            -->
-        <div class="">
+      <div class="row column"> 
           {{{body}}}    
         </div>
 
     </div>
     
 <!--     Bootrstaps scripts -->
+   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </body>
 </html>
