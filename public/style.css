@@ -35,11 +35,18 @@
 }
 
 /*  STYLE */
+.container {
+  box-shadow: 1px 1px 20px black;
+  font-family: 'Roboto', sans-serif;
+}
 /* header*/
 header {
   width: 100%;
   display: flex;
-  background-color: lightblue;
+/*   background-color: lightblue; */
+  background: linear-gradient(to top right, black, brown);
+  color: white;
+/*   text-shadow: 1px black; */
   
 }
 header h1 {
@@ -67,7 +74,7 @@ nav ul {
   flex-direction: column;
   list-style: none;
   padding: 10px;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 nav li {
   cursor: pointer;
