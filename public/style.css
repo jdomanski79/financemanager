@@ -2,7 +2,7 @@
 
 .container {
   display: flex;
-  /*justify-content: center;*/
+  justify-content: top;
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
@@ -23,11 +23,11 @@
   .column {
     flex: 1;
   }
-  ._20{
-    flex: 2;
+  ._15{
+    flex: 1.5;
   }
-  ._80 {
-    flex: 8
+  ._85 {
+    flex: 8.5
   }
 }
 
@@ -50,6 +50,9 @@ header ul{
   margin-left: auto;
   margin-right: 10px;
 }
+header ul li {
+  padding: 10px;
+}
 
 /* Main side navigation */
 nav {
@@ -59,16 +62,19 @@ nav {
 nav ul {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   list-style: none;
-  padding: 1px;
+  padding: 10px;
+  font-size: 1.2em;
 }
 nav li {
   cursor: pointer;
   margin-right: 10px;
+  margin-top: 5px;
 }
 nav a{
- text-decoration: none; 
+ text-decoration: none;
+  display: block;
+  width: 100%;
 }
 nav a:hover {
   background-color: lightyellow;
