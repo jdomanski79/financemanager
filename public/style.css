@@ -2,12 +2,12 @@
 
 .container {
   display: flex;
-  justify-content: top;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
+  background-color: ghostwhite;
 }
 .row {
   display: flex;
@@ -67,6 +67,7 @@ header ul li {
 /* Main side navigation */
 nav {
   width: 100%;
+  background-color: lightblue;
 }
 
 nav ul {
@@ -92,7 +93,7 @@ nav a:hover {
 
 /* MAIN */
 main {
-  
+  padding: 10px;
 }
 
 /* table styling*/
