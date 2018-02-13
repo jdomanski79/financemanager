@@ -1,3 +1,15 @@
+
+/*
+HEX: #d5e1df
+
+HEX: #e3eaa7
+
+HEX: #b5e7a0
+
+HEX: #86af49
+*/
+
+
 /* GRID  */
 
 .container {
@@ -7,7 +19,7 @@
   flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
-  background-color: ghostwhite;
+  background-color: #e3eaa7;
 }
 .row {
   display: flex;
@@ -36,17 +48,19 @@
 
 /*  STYLE */
 .container {
-  box-shadow: 1px 1px 20px black;
+  box-shadow: 1px 1px 10px 1px black;
   font-family: 'Roboto', sans-serif;
+  border-radius: 10px;
 }
 /* header*/
 header {
   width: 100%;
   display: flex;
-/*   background-color: lightblue; */
-  background: linear-gradient(to top right, black, brown);
+  background-color: #86af49;
+/*   background: linear-gradient(to top right, black, brown); */
   color: white;
 /*   text-shadow: 1px black; */
+   box-shadow: 1px 1px 10px green;
   
 }
 header h1 {
@@ -66,8 +80,7 @@ header ul li {
 
 /* Main side navigation */
 nav {
-  width: 100%;
-  background-color: lightblue;
+  background-color: #d5e1df;
 }
 
 nav ul {
