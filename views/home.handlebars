@@ -1,43 +1,35 @@
-<div class="card fluid shadowed">
-   <h1 class="section">
-     Witaj {{user.name}}!
-   </h1>
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>
-          Bilans miesiąca: {{bilans}} zł
-        </h2>  
-      </div>
-      
-      <div class="col-sm-12 col-md-6">
-        <div class="card fluid shadowed">
-          <h2 class="section">
-            Wpływy: {{incomes.total}} zł
-          </h2>
-         <ul>
-            {{#each incomes.categories}}
-            <li>
-              {{this.name}} - {{this.sum}} zł
-            </li>
-            {{/each}}
-          </ul>
-        </div>
-      </div>
-      
-      <div class="col-sm-12 col-md-6">
-        <div class="card fluid shadowed">
-          <h2 class="section">
-            Wydatki: {{outcomes.total}} zł
-          </h2>
-         <ul>
-            {{#each outcomes.categories}}
-            <li>
-              {{this.name}} - {{this.sum}} zł
-            </li>
-            {{/each}}
-          </ul>
-        </div>
-      </div>
-      
+ <h1>
+   Witaj {{user.name}}!
+ </h1>
+ <h2>
+   Bilans miesiąca: {{bilans}} zł
+ </h2>
+ 
+<div class="row">
+  <div class="column">
+      <h2 class="section">
+        Wpływy: {{incomes.total}} zł
+      </h2>
+     <ul>
+        {{#each incomes.categories}}
+        <li>
+          {{this.name}} - {{this.sum}} zł
+        </li>
+        {{/each}}
+      </ul>
   </div>
+
+  <div class="column">
+      <h2 class="section">
+        Wydatki: {{outcomes.total}} zł
+      </h2>
+     <ul>
+        {{#each outcomes.categories}}
+        <li>
+          {{this.name}} - {{this.sum}} zł
+        </li>
+        {{/each}}
+      </ul>
+    </div>
 </div>
+

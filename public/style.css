@@ -26,6 +26,9 @@
   ._15{
     flex: 1.5;
   }
+  ._50 {
+    flex: 5;
+  }
   ._85 {
     flex: 8.5
   }
@@ -78,6 +81,11 @@ nav a{
 }
 nav a:hover {
   background-color: lightyellow;
+}
+
+/* MAIN */
+main {
+  
 }
 
 /* table styling*/
