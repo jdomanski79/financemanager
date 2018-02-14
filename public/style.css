@@ -22,6 +22,7 @@ HEX: #3b3a30
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
 }
@@ -63,23 +64,26 @@ body {
 /*  STYLE */
 .container {
 /*   box-shadow: 0px 0px 15px black; */
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 /*   border-radius: 10px; */
 }
 /* header*/
 header {
   min-width: 100vw;
-  display: flex;
   background-color: #3b3a30;
 /*   background: linear-gradient(to top right, black, brown); */
-  color: white;
+  color: #eaece5;
 /*   text-shadow: 1px black; */
 /*    box-shadow: 0px 1px 5px black; */
   border-bottom: 1px solid green;
 /*   border-top-left-radius: 10px; */
 /*   border-top-right-radius: 10px; */
   
-  
+}
+header div {
+  display: flex;
+  margin: 0 auto;
+  max-width: 960px;
 }
 header h1 {
   margin-left: 10px;
@@ -118,6 +122,9 @@ nav a {
   display: block;
   width: 100%;
 }
+nav a, nav a:visited {
+  color: #3b3a30;
+}
 nav a:hover {
   background-color: lightyellow;
 }
@@ -126,6 +133,7 @@ nav a:hover {
 main {
   padding: 10px;
   margin: 0;
+  color: #3b3a30;
 /*   background-color: #e3eaa7; */
   
 }
