@@ -73,13 +73,14 @@ body {
   font-size: 1em;
   padding: 0 20px;
 }
+
 nav ul {
   display: flex;
   list-style: none;
   padding: 0px;
-  justify-content: flex-end;
+/*   justify-content: flex-end; */
   
-/*   justify-content: space-between; */
+  justify-content: space-between;
 }
 nav li {
   cursor: pointer;
@@ -116,6 +117,9 @@ nav a:hover {
 
 /* Duży EKRAN */
 @media screen and (min-width: 768px){
+  nav {
+    margin-left:auto;
+  }
   nav ul{
     justify-content: space-around;
   }
