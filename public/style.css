@@ -66,8 +66,8 @@ body {
   max-width: 960px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-  order: 10;
 }
 
 .logo{
@@ -78,11 +78,12 @@ nav ul {
   display: flex;
   list-style: none;
   padding: 0px;
-  justify-content: space-between;
+  justify-content: flex-end;
+  
+/*   justify-content: space-between; */
 }
 nav li {
   cursor: pointer;
-  justify-content: flex-end;
   
 }
 nav a {
@@ -100,6 +101,7 @@ nav a, nav a:visited {
 nav a:hover {
   background-color: lightgrey;
   border-radius: 5px;
+  color: black;
 }
 .nav__user{
 /*   margin-left: auto; */
@@ -123,7 +125,7 @@ nav a:hover {
   }
   .nav__text {
     display: inline;
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
   .nav__icon{
     display: none;
