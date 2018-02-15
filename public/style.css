@@ -65,11 +65,13 @@ body {
 .nav-content {
   max-width: 960px;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  order: -1;
 }
 
 .logo{
-  font-size: 2.5em;
+  font-size: 1em;
   padding: 10px;
 }
 nav ul {
@@ -103,15 +105,24 @@ nav a:hover {
   display: none;
 }
 
-.fas {
-  font-size: 40px;
+.nav__icon {
+  font-size: 2em;
 }
 
 /* Duży EKRAN */
 @media screen and (min-width: 768px){
+  .nav-content{
+    flex-direction: row;
+  }
+  .logo {
+    font-size: 2.5em;
+  }
   .nav__text {
     display: inline;
     font-size: 0.8em;
+  }
+  .nav__icon{
+    font-size: 1em;
   }
 }
 
