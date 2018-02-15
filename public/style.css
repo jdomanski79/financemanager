@@ -82,6 +82,7 @@ nav ul {
 }
 nav li {
   cursor: pointer;
+  justify-content: flex-end;
   
 }
 nav a {
@@ -101,7 +102,7 @@ nav a:hover {
   border-radius: 5px;
 }
 .nav__user{
-  margin-left: auto;
+/*   margin-left: auto; */
 /*   margin-right: auto; */
 }
 .nav__text{
