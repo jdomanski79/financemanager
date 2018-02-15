@@ -66,7 +66,6 @@ body {
   max-width: 960px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
 }
 
@@ -92,7 +91,7 @@ nav a {
   display: block;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 0 10px;
 }
 nav a, nav a:visited {
   color: #eaece5;
@@ -117,9 +116,10 @@ nav a:hover {
 
 /* Duży EKRAN */
 @media screen and (min-width: 768px){
-  .nav-content{
-    flex-direction: row;
+  nav ul{
+    justify-content: space-around;
   }
+  
   .logo {
     font-size: 2.5em;
   }
