@@ -32,7 +32,7 @@ body {
   width: 100%;
 }
 .column{
-  flex-basis: 100%
+  flex-basis: 100%;
 }
 
 @media screen and (min-width: 768px){
@@ -56,13 +56,9 @@ body {
 }
 /* Navigation */
 .navigation{
-  min-width: 100vw;
+/*   min-width: 100vw; */
   background-color: #3b3a30;
   color: #eaece5;
-  border-bottom: 1px solid green;
-/*   border-top-left-radius: 10px; */
-/*   border-top-right-radius: 10px; */
-  
 }
 
 /* Main site navigation */
