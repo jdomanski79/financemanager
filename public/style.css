@@ -85,9 +85,11 @@ nav li {
   
 }
 nav a {
- text-decoration: none;
+  text-decoration: none;
+  text-align: center;
   display: block;
   width: 100%;
+  height: 100%;
   padding: 10px;
 }
 nav a, nav a:visited {
@@ -96,6 +98,7 @@ nav a, nav a:visited {
 }
 nav a:hover {
   background-color: lightgrey;
+  border-radius: 5px;
 }
 .nav__user{
   margin-left: auto;
@@ -119,10 +122,10 @@ nav a:hover {
   }
   .nav__text {
     display: inline;
-    font-size: 0.8em;
+    font-size: 1.3em;
   }
   .nav__icon{
-    font-size: 1em;
+    display: none;
   }
 }
 
