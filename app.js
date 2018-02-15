@@ -61,7 +61,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Locals
-app.locals.appTitle = "Finanse osobiste";
+app.locals.appTitle = "1K 4,7";
 // MOUNTING ROUTER
 //=================
 app.use('/login', routes);
