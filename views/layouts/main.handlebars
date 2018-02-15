@@ -20,29 +20,54 @@
   
   <body>
     <div class="container">
-      <header>
-        <div>
-          <h1>
-            1K4,7
+      <section class="navigation">
+        <div class="nav-content">
+          <h1 class="logo">
+              1K4,7
           </h1>
-          <ul>
-            <li class="nav__user"><i class="fas fa-user"></i> {{user.name}}</li>
-            <li> <a class="sublink-1" href="/logout">Wyloguj</a></li>  
-          </ul>
+          <!-- Main navigation         -->
+          <nav class="column">
+            <ul>
+              <li>
+                <a class="" href="/">
+                  <i class="fas fa-home"></i>
+                  <br>
+                  <span class="nav__text">Home</span>
+                </a>
+              </li> 
+              <li>
+                <a class="" href="/transactions">
+                  <i class="fas fa-list"></i>
+                  <br>
+                  <span class="nav__text">Statystyki</span>
+                </a>
+              </li>
+              <li>
+                <a class="" href="/transaction/create">
+                  <i class="fas fa-plus"></i>
+                  <br>
+                  <span class="nav__text">Nowa</span>
+                </a>
+              </li>
+              <li>
+                <a class="" href="/categories">
+                  <span class="nav__text">Kategorie</span>
+                </a>
+              </li>
+              <li class="nav__user">
+                <i class="fas fa-user"></i> 
+                <br>
+                <span class="nav__text">{{user.name}}</span>
+              </li>
+              <li>
+                <a class="sublink-1" href="/logout">
+                  <span class="nav__text">Home</span>
+                </a>
+              </li>  
+            </ul>
+          </nav>
         </div>
-      </header>
-      
-        
-        <!-- Main navigation         -->
-        <nav class="column">
-          <ul>
-            <li><a class="" href="/"><i class="fas fa-home"></i> Home</a></li> 
-            <li><a class="" href="/transactions"><i class="fas fa-list"></i> Statystyki</a></li>
-            <li><a class="" href="/transaction/create"><i class="fas fa-plus"></i> Nowa..</a></li>
-            <li><a class="" href="/categories">Kategorie</a></li>
-          </ul>
-        </nav>
-          
+      </section>          
       <!-- main content            -->
       <main class="column"> 
           {{{body}}}    

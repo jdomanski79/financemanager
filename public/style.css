@@ -70,13 +70,10 @@ body {
 /*   border-radius: 10px; */
 }
 /* header*/
-header {
+.navigation{
   min-width: 100vw;
   background-color: #3b3a30;
-/*   background: linear-gradient(to top right, black, brown); */
   color: #eaece5;
-/*   text-shadow: 1px black; */
-/*    box-shadow: 0px 1px 5px black; */
   border-bottom: 1px solid green;
 /*   border-top-left-radius: 10px; */
 /*   border-top-right-radius: 10px; */
@@ -88,7 +85,7 @@ header div {
   max-width: 960px;
 }
 header h1 {
-  margin-left: 10px;
+  
 }
 header ul{
   display: flex;
