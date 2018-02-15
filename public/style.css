@@ -9,16 +9,6 @@ HEX: #b5e7a0
 HEX: #86af49
 */
 
-/*
-HEX: #eaece5
-
-HEX: #b2c2bf
-
-HEX: #c0ded9
-
-HEX: #3b3a30
-*/
-
 * {
   box-sizing: border-box;
 }
@@ -79,41 +69,22 @@ body {
 /*   border-top-right-radius: 10px; */
   
 }
-header div {
-  display: flex;
-  margin: 0 auto;
-  max-width: 960px;
-}
-header h1 {
-  
-}
-header ul{
-  display: flex;
-  /*justify-content: space-around;*/
-  align-items: center;
-  list-style: none;
-  margin-left: auto;
-  margin-right: 10px;
-}
-header ul li {
-  padding: 10px;
-}
-header a, header a:visited {
-  text-decoration: none;
-  color: inherit;
-}
 
 /* Main site navigation */
-nav {
-  background-color: #eaece5;
+.nav-content {
+  max-width: 960px;
+  display: flex;
+  align-items: center;
 }
 
+.logo{
+  font-size: 2.5em;
+  padding: 10px;
+}
 nav ul {
   display: flex;
-/*   flex-direction: column; */
   list-style: none;
-  padding: 10px;
-/*   font-size: 1.1em; */
+  padding: 0px;
 }
 nav li {
   cursor: pointer;
@@ -126,11 +97,25 @@ nav a {
   width: 100%;
 }
 nav a, nav a:visited {
-  color: #3b3a30;
+  color: #eaece5;
+   transition: background .2s linear
 }
 nav a:hover {
   background-color: lightyellow;
 }
+.nav__text{
+  display: none;
+}
+
+
+/* Duży EKRAN */
+@media screen and (min-width: 768px){
+  .nav__text {
+    display: inline;
+    font-size: 0.8em;
+  }
+}
+
 
 /* MAIN */
 main {
