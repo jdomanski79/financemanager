@@ -80,7 +80,7 @@ nav ul {
   display: flex;
   list-style: none;
   padding: 0px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 nav li {
   cursor: pointer;
@@ -90,6 +90,7 @@ nav a {
  text-decoration: none;
   display: block;
   width: 100%;
+  padding: 10px;
 }
 nav a, nav a:visited {
   color: #eaece5;
@@ -106,8 +107,8 @@ nav a:hover {
   display: none;
 }
 
-nav i .fas{
-  font-size: 2em;
+.fas {
+  font-size: 40px;
 }
 
 /* Duży EKRAN */
