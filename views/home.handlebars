@@ -15,9 +15,30 @@
         <tr>
           <th> Wpływy:</th>
           <th> {{incomes.total}} zł</th>
+         
         </tr>
       </thead>
       <tbody>
+        {{#each incomes.categories}}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.sum}} zł</td>
+        </tr>
+        {{/each}}
+      </tbody>
+      <thead>
+        <tr>
+          <th> Wydatki:</th>
+          <th> {{outcomes.total}} zł</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each outcomes.categories}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.sum}} zł</td>
+      </tr>
+      {{/each}}
       </tbody>
     </table>  
     
@@ -25,7 +46,7 @@
     
     
     
-    
+<!--     
     <h2 class="section">
         Wpływy: {{incomes.total}} zł
       </h2>
@@ -48,7 +69,7 @@
           {{this.name}} - {{this.sum}} zł
         </li>
         {{/each}}
-      </ul>
+      </ul> -->
     </div>
 </div>
 
