@@ -31,7 +31,7 @@ body {
 .container {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+/*   align-items: center; */
   flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
@@ -106,14 +106,14 @@ header a, header a:visited {
   color: inherit;
 }
 
-/* Main side navigation */
+/* Main site navigation */
 nav {
   background-color: #eaece5;
 }
 
 nav ul {
   display: flex;
-  flex-direction: column;
+/*   flex-direction: column; */
   list-style: none;
   padding: 10px;
 /*   font-size: 1.1em; */
