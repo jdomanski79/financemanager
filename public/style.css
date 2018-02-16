@@ -57,9 +57,21 @@ body {
 /* Navigation */
 .navigation{
 /*   min-width: 100vw; */
+  position: relative;
   background-color: #3b3a30;
   color: #eaece5;
+  margin: 0 -600rem;
+  padding: 0 600rem;
 }
+.navigation:before{
+  content: "";
+  position: absolute;
+/*   top: 0; */
+/*   bottom: 0; */
+/*   background-color: #3b3a30; */
+  
+}
+
 
 /* Main site navigation */
 .nav-content {
