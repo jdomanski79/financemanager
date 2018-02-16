@@ -57,11 +57,12 @@ body {
 /* Navigation */
 .navigation{
 /*   min-width: 100vw; */
-  position: fixed;
+/*   position: fixed; */
+  
   background-color: #3b3a30;
   color: #eaece5;
-  margin: 0 -600rem;
-  padding: 0 600rem;
+  margin: 0 -100rem;
+  padding: 0 100rem;
 }
 .navigation:before {
   content: "";
@@ -70,7 +71,9 @@ body {
 
 /* Main site navigation */
 .nav-content {
+  width: 100%;
   max-width: 960px;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
