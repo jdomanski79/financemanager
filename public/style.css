@@ -57,19 +57,14 @@ body {
 /* Navigation */
 .navigation{
 /*   min-width: 100vw; */
-  position: relative;
+  position: fixed;
   background-color: #3b3a30;
   color: #eaece5;
   margin: 0 -600rem;
   padding: 0 600rem;
 }
-.navigation:before{
+.navigation:before {
   content: "";
-  position: absolute;
-/*   top: 0; */
-/*   bottom: 0; */
-/*   background-color: #3b3a30; */
-  
 }
 
 
@@ -91,11 +86,10 @@ nav ul {
   display: flex;
   list-style: none;
   justify-content: space-between;
-  height: 100%;
+  margin: 0;
 }
 nav li {
   cursor: pointer;
-  height: 100%;
   
 }
 nav a {
@@ -137,7 +131,7 @@ nav a:hover {
   }
   
   .logo {
-    font-size: 2.5em;
+    font-size: 3em;
   }
   .nav__text {
     display: inline;
@@ -152,7 +146,7 @@ nav a:hover {
 /* MAIN */
 main {
 /*   padding: 10px; */
-  margin: 0;
+  margin: 56px 0 0 0;
   color: #3b3a30;
 /*   background-color: #e3eaa7; */
   
