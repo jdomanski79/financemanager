@@ -158,6 +158,7 @@ main {
 /* table styling*/
 table {
   border-collapse: collapse;
+  table-layout: fixed;
   width: 100%;
 }
 th {
@@ -165,8 +166,9 @@ th {
   background-color: #c0ded9;
 }
 td, th{
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding: 8px;
+
 }
 tr:nth-child(even){
   background-color: #f2f2f2;
