@@ -1,19 +1,14 @@
 :root{
-  --main-background:#eaece5;
+  --main-background: #EBF7E3;
+  --header-background: #1B3409;
+  --header-color: #66B032;
 }
-
-
 /* 
-
-HEX: #eaece5
-
-HEX: #b2c2bf
-
-HEX: #c0ded9
-
-HEX: #3b3a30
-
- */
+#EBF7E3
+#9BD770
+#66B032
+#375F1B
+#1B3409 */
 
 * {
   box-sizing: border-box;
@@ -68,8 +63,8 @@ body {
 /*   min-width: 100vw; */
 /*   position: fixed; */
   
-  background-color: #3b3a30;
-  color: #eaece5;
+  background-color: var(--header-background);
+  color: var(--header-color);
 }
 
 
