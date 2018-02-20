@@ -2,6 +2,7 @@
   --main-background: #EBF7E3;
   --header-background: #1B3409;
   --header-color: #66B032;
+  --form-name-background: #66B032;
 }
 /* 
 #EBF7E3
@@ -214,7 +215,14 @@ tr:hover {
 /*---- FORMS -------*/
 .input{
   display: flex;
+  margin-bottom: 1.5em;
+  width: 100%;
 }
 .input-field{
   flex: 1;
+  
+}
+.input-name {
+  background: var(--form-name-background);
+  padding: 0.5em 0.75em;
 }
