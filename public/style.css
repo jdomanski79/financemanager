@@ -2,7 +2,7 @@
   --main-background: #EBF7E3;
   --header-background: #1B3409;
   --header-color: #66B032;
-  --form-name-background: #66B032;
+  --form-name-background: #9BD770;
 }
 /* 
 #EBF7E3
@@ -217,12 +217,22 @@ tr:hover {
   display: flex;
   margin-bottom: 1.5em;
   width: 100%;
+  
 }
 .input-field{
   flex: 1;
+  font: inherit;
+  font-weight: normal;
   
 }
 .input-name {
   background: var(--form-name-background);
   padding: 0.5em 0.75em;
+/*   width: 7em; */
+   
+}
+.input-field,
+.input-name {
+  font: inherit;
+  border: 1px solid rgba(147, 128, 108, 0.25);
 }
