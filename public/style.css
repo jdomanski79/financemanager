@@ -210,3 +210,11 @@ tr:hover {
   text-align: right;
   max-width: 100px;
 }
+
+/*---- FORMS -------*/
+.input{
+  display: flex;
+}
+.input-field{
+  flex: 1;
+}
