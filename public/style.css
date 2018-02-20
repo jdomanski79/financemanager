@@ -1,8 +1,9 @@
 :root{
-  --main-background: #EBF7E3;
+  --main-background: #FFE3;/*#EBF7E3; */
   --header-background: #1B3409;
   --header-color: #66B032;
-  --form-name-background: #9BD770;
+  --form-name-background: #EBF7E3;
+  --table-header-background: #EBF7E3;
 }
 /* 
 #EBF7E3
@@ -169,12 +170,13 @@ table {
   table-layout: fixed;
   width: 100%;
    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  background-color: white;
 }
 
 
 th {
   font-size: 1.2em;
-  background-color: #c0ded9;
+  background-color: var(--table-header-background);
 }
 td, th{
   border-bottom: 1px solid #ddd;
@@ -215,6 +217,9 @@ tr:hover {
 }
 
 /*---- FORMS -------*/
+.form{
+  width: 100%;
+}
 .input{
   display: flex;
   margin-bottom: 1.5em;
@@ -223,11 +228,10 @@ tr:hover {
 }
 .input-field{
   flex: 1;
-  padding-left: 1em; 
 }
 .input-name {
   background: var(--form-name-background);
-  padding: 0.5em 0.75em;
+  
 /*   width: 6em; */
   margin: 0 auto;
 }
@@ -235,5 +239,10 @@ tr:hover {
 .input-name {
   font: inherit;
   font-weight: normal;
+  padding: 0.5em 0.75em;
   border: 1px solid rgba(147, 128, 108, 0.25);
+}
+
+.btn-submit {
+  border-radius: 2px;
 }
