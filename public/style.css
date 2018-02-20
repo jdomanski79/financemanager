@@ -158,6 +158,7 @@ main {
   color: #3b3a30;
   padding: 10px;
   margin: 0 auto;
+  width: 100%;
 /*   background-color: #e3eaa7; */
   
 }
@@ -167,6 +168,7 @@ table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
+   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -221,18 +223,17 @@ tr:hover {
 }
 .input-field{
   flex: 1;
-  font: inherit;
-  font-weight: normal;
-  
+  padding-left: 1em; 
 }
 .input-name {
   background: var(--form-name-background);
   padding: 0.5em 0.75em;
-/*   width: 7em; */
-   
+/*   width: 6em; */
+  margin: 0 auto;
 }
 .input-field,
 .input-name {
   font: inherit;
+  font-weight: normal;
   border: 1px solid rgba(147, 128, 108, 0.25);
 }
