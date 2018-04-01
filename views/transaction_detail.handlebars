@@ -1,7 +1,7 @@
 <table>
   <tr>
     <th>Data</th>
-    <td> {{transaction.date}}</td>
+    <td> {{transaction.shortDate}}</td>
   </tr>
   <tr>
     <th>Kwota</th>
@@ -24,3 +24,7 @@
     <td>{{transaction.editedBy}} {{transaction.editedAt}}</td>
   </tr>
 </table>
+
+<a href='{{transaction.url}}/update'>Edytuj</a>
+<a href='{{transaction.url}}/delete'>Usuń</a>
+

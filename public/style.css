@@ -255,8 +255,7 @@ form{
 }
 .input-name {
   background: var(--form-name-background);
-  
-/*   width: 6em; */
+  width: 5em;
   margin: 0 auto;
 }
 .input-field,

@@ -33,8 +33,8 @@ transactionSchema
 });
 
 transactionSchema
-.virtual('currency')
-.get(function waluta () { 
+  .virtual('currency')
+  .get(function waluta () { 
       const sum = (this.sum/100).toFixed(2).replace('.', ',');  
       let main = sum.slice(0,-3);
   
