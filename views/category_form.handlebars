@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<form method="post">
+  
+  <div >
+    <label for="category-name">Nazwa</label>
+    <input id="category-name" type="text" name="name" value="{{category.name}}" autofocus>
+  </div>
+  
+  <div class="input-group">
+    <input  type="radio" name="type" value="outcome" id="radio-outcome" {{checked category.type "outcome"}}>
+    <label  for="radio-outcome">Wydatek</label>
+    <br>
+    <input type="radio" name="type" value="income" id="radio-income" {{checked category.type "income"}}>
+    <label for="radio-income">Wpływ</label>
+  </div>
+  
+  <br>
+  <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>
+
+{{#if errors}}
+  <ul>
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

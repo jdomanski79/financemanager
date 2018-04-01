@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title> {{appTitle}}</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet"> 
+    <link rel="stylesheet" href="/style.css"> 
+
+  </head>
+  
+  <body>
+    <div class="container">
+      <header class="main-head">
+        <h1 class="logo">
+          <a href="/">{{appTitle}}</a>
+        </h1>
+        <div class="nav-mobile"><a id="nav-toggle" href="#">&#x2261;</a></div>
+      </header>
+      <!-- Main navigation         -->
+      
+      <nav class="main-nav">
+        
+        <ul>
+          <li>
+            <a href="/transactions">
+              Transakcje
+            </a>
+          </li>
+          <li>
+            <a class="" href="/transaction/create">
+              Nowa
+            </a>
+          </li>
+           <li>
+            <a class="" href="/stats/">
+              Statystyki
+            </a>
+          </li>
+          <li>
+            <a class="" href="/categories">
+              Kategorie
+            </a>
+          </li>
+          <li>
+            <hr>{{user.name}}
+          </li>
+          <li>
+            <a href="/logout">
+              <span class="nav__text">Wyloguj</span>
+            </a>
+          </li>   
+        </ul>
+      </nav>
+      <!-- main content            -->
+      <main class="main-content"> 
+          {{{body}}}    
+      </main>
+
+    
+  </div>
+    
+   <script src="/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+
+<table class="categories-table">
+  <caption>Kategorie</caption>
+  <thead>
+    <tr>
+      <th colspan="2">Wpływy</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data.incomes}}
+    <tr>
+      <td>
+        {{this.name}}
+      </td> 
+      <td>
+        <a href='{{this.url}}'>Edytuj</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <thead>
+    <tr>
+      <th colspan="2">Wydatki</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data.outcomes}}
+    <tr>
+      <td>
+        {{this.name}}
+      </td> 
+      <td>
+        <a href='{{this.url}}'>Edytuj</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<!-- <button class="input-name"> -->
+  <a href='category/create'>Utwórz nową..</a>  
+<!-- </button> -->
+
+    
+  
+
+

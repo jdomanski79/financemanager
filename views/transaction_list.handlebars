@@ -1,0 +1,96 @@
+<h1 class="text-center">
+  {{title}}
+</h1>
+<form class="filters">
+  <fieldset class="transaction-filters">
+    <legend>
+      Filtry:
+    </legend>
+    
+    <div class="input">
+      <span class="input-name">
+        <label for="category">
+          Kategoria 
+        </label>
+      </span>
+      <select class="input-field" name="category" id="category">
+        <option value=''>Wszystkie</option>
+          {{#each categories}} 
+             <option value='{{this._id}}' {{this.selected}} >{{this.name}}</option>
+          {{/each}}
+      </select>
+    </div>
+    
+    <div class="input">
+      <span class="input-name">
+        <label for="sort">
+          Sortuj
+        </label>
+      </span>
+      <select class="input-field" name="sort" id="sort">
+        <option value='date-des'>data malejąco</option>
+        <option value='date-asc'>data rosnąco</option>
+        <option value='sum-asc'>kwota rosnąco</option>
+        <option value='sum-des'>kwota malejąco</option>
+      </select>
+    </div> 
+    
+    <div class="input">
+      <span class="input-name">
+        <label for="range">
+          Zakres
+        </label>
+      </span>
+      <select class="input-field" name="range" id="range">
+        <option value='this-week'>bieżący tydzień</option>
+        <option value='this-month'>ten miesiąc</option>
+        <option value='last-3-months'>ostatnie 3 miesiace</option>
+      </select>
+    </div>
+    
+    <div class="input">
+      <span class="input-name">
+        <label for="description">
+          Opis
+        </label>
+      </span>
+      <input class="input-field" type="text" name="description" id="description" value="{{query.description}}" placeholder="wpisz coś">
+    </div>
+    
+    <button type="submit" class="input-name btn-submit">Szukaj</button>
+  </fieldset> 
+    
+</form>
+
+<!-- <main> -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width:2em">Data</th>
+        <th class="desktop">Kategoria</th>
+        <th class="mobile">Opis</th>
+        <th style="width: 5em">Kwota</th>
+        <th class="desktop">Opis</th>
+        <th class="desktop">Kto</th>
+      </tr>
+    </thead>
+    {{#each transactions}}
+      <tr class="clickable" data-url="{{this.url}}">
+        <td class="align-center">{{this.shortDate}}</td>
+        <td class="align-left">
+          {{#if this.description}}
+            <span class="mobile">
+              {{this.description}}<br/>
+            </span>
+          {{/if}}
+          <span class="mobile-category {{this.category.type}}">
+            {{this.category.name}}
+          </span>
+        </td>
+        <td class="currency">{{this.currency}}</td>
+        <td class="desktop">{{this.description}}</td>
+        <td class="align-center desktop">{{this.createdBy.name}}</td>
+      </tr>
+    {{/each}}
+</table>
+<!-- </main> -->

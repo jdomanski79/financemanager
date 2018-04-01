@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{{appTitle}}</title>
+    <!--     MINI css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v2.3.7/dist/mini-default.min.css">
+    
+  
+  </head>
+  
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-2 col-md-offset-5">
+          <form method="post" autocomplete='off'>
+            <fieldset>
+              <legend>
+                Zaloguj się.
+              </legend>
+              <div class="input-group">
+                <label for="username">Nazwa</label>
+                <input type="text" id="username" name="username" placeholder="Nazwa użytkownika">
+              </div>
+              <div class="input-group">
+                <label for="pwd">Hasło&nbsp</label>
+                <input type="password" id="pwd" name="password">
+              </div>
+              <button type="submit" class="primary">
+                Loguj
+              </button>
+            </fieldset>
+          </form>
+          {{#if error}}
+            {{error}}
+          {{/if}}
+            
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  </body>
+</html>

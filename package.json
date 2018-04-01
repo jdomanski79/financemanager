@@ -1,0 +1,36 @@
+{
+  "//1": "describes your app and its dependencies",
+  "//2": "https://docs.npmjs.com/files/package.json",
+  "//3": "updating this file will download and update your packages",
+  "name": "financemanager",
+  "version": "0.0.1",
+  "description": "What am I about?",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "express-validator": "^5.0.1",
+    "mini.css": "^2.3.7",
+    "mongoose": "^5.0.6",
+    "morgan": "^1.9.0",
+    "express-session": "^1.15.6",
+    "helmet": "^3.11.0",
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^2.0.1"
+  },
+  "engines": {
+    "node": "9.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "devDependencies": {
+    "nodemon": "^1.14.3"
+  }
+}

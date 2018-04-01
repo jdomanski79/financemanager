@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Data</th>
+    <td> {{transaction.date}}</td>
+  </tr>
+  <tr>
+    <th>Kwota</th>
+    <td>{{transaction.sum}}</td>
+  </tr>
+  <tr>
+    <th>Kategoria</th>
+    <td>{{transaction.category.name}}</td>
+  </tr>
+  <tr>
+    <th>Opis</th>
+    <td>{{transaction.description}}</td>
+  </tr>
+  <tr>
+    <th>Utworzone przez</th>
+    <td>{{transaction.createdBy.name}}</td>
+  </tr>
+  <tr>
+    <th>Edytowane</th>
+    <td>{{transaction.editedBy}} {{transaction.editedAt}}</td>
+  </tr>
+</table>

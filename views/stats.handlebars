@@ -1,0 +1,109 @@
+<h2>
+
+</h2>
+
+<table class='stats'>
+  <caption>
+    Statystyki
+  </caption>
+  <thead>
+    <tr>
+      <th>
+      
+      </th>
+      <th>
+        I
+      </th>
+      <th>
+        II
+      </th>
+      <th>
+        III
+      </th>
+      <th>
+        IV
+      </th>
+      <th>
+        V
+      </th>
+      <th>
+        VI
+      </th>
+      <th>
+        VII
+      </th>
+      <th>
+        VIII
+      </th>
+      <th>
+        IX
+      </th>
+      <th>
+        X
+      </th>
+      <th>
+        XI
+      </th>
+      <th>
+        XII
+      </th>
+      
+    </tr>
+    
+  </thead>
+ 
+<!--   Wpływy -->
+  
+  {{#each stats.incomes.categories}}  
+    <tr>
+     {{#each this}}
+       <td>
+         {{this}}
+       </td>
+      {{/each}}
+    </tr>
+  {{/each}}
+
+  <!--  Posumowanie wpływów -->
+  <thead>
+    <tr>
+      <th>
+        Wpływy
+      </th>
+    {{#each stats.incomes.monthSum}}
+      <th>
+        {{this}}
+      </th>
+    {{/each}}
+    </tr>
+  </thead>
+  
+<!-- Wydatki    -->
+  
+  {{#each stats.outcomes.categories}}  
+    <tr>
+     {{#each this}}
+      <td>
+        {{this}}
+      </td>
+      {{/each}}
+    </tr>
+  {{/each}}
+
+  <!-- podsumowanie wydatków   -->
+  <thead>
+    <tr>
+      <th>
+        Wydatki
+      </th>
+    {{#each stats.outcomes.monthSum}}
+      <th>
+        {{this}}
+      </th>
+    {{/each}}
+    </tr>
+  </thead>
+
+      
+  
+</table>
