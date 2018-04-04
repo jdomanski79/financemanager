@@ -235,9 +235,20 @@ tr:hover {
 }
 
 /*---- FORMS -------*/
-form{
-/*   width: 100%; */
+form,
+.form {
+  background: var(--form-name-background);
+  border-radius: 4px;
 }
+
+.form__label {
+  
+}
+.form__input {
+  display: inline-block;
+  width: 100%;
+}
+
 .transaction-filters{
   display: flex;
   flex-wrap: wrap;
