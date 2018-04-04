@@ -167,7 +167,8 @@ main {
 }
 
 /* table styling*/
-table {
+table,
+.table {
   border-collapse: collapse;
 /*   table-layout: fixed; */
   width: 100%;
@@ -177,10 +178,16 @@ table {
 }
 
 
-th {
+th,
+.table__header {
   font-size: 1.2em;
   background-color: var(--table-header-background);
   padding: 10px;
+}
+
+.table__header--fixed {
+  width: 3em;
+  text-align: left;
 }
 
 
