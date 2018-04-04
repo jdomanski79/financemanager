@@ -15,9 +15,13 @@
 #66B032
 #375F1B
 #1B3409 */
-
 * {
   box-sizing: border-box;
+}
+
+body {
+  
+  margin: 0;
 }
 /* GRID  */
 
@@ -242,16 +246,28 @@ form,
 fieldset {
   border: none;
 }
+legend {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
 .form__label {
   
 }
+
 .form__input {
+  font-size: 1.1rem;
   display: inline-block;
   width: 100%;
-  padding: 8px 20px;
+  padding: 10px 20px;
   margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.form__input--submit {
+  margin: 16px 0;
+  cursor: pointer;
+  background: var(--header-color);
 }
 
 .transaction-filters{
