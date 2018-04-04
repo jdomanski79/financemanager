@@ -16,9 +16,8 @@
 #375F1B
 #1B3409 */
 
-body {
+* {
   box-sizing: border-box;
-  margin: 0;
 }
 /* GRID  */
 
@@ -240,13 +239,19 @@ form,
   background: var(--form-name-background);
   border-radius: 4px;
 }
-
+fieldset {
+  border: none;
+}
 .form__label {
   
 }
 .form__input {
   display: inline-block;
   width: 100%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .transaction-filters{
