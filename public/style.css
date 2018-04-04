@@ -15,9 +15,12 @@
 #66B032
 #375F1B
 #1B3409 */
+* {
+  box-sizing: border-box;
+}
 
 body {
-  box-sizing: border-box;
+  
   margin: 0;
 }
 /* GRID  */
@@ -167,7 +170,8 @@ main {
 }
 
 /* table styling*/
-table {
+table,
+.table {
   border-collapse: collapse;
 /*   table-layout: fixed; */
   width: 100%;
@@ -177,10 +181,16 @@ table {
 }
 
 
-th {
+th,
+.table__header {
   font-size: 1.2em;
   background-color: var(--table-header-background);
   padding: 10px;
+}
+
+.table__header--fixed {
+  width: 3em;
+  text-align: left;
 }
 
 
@@ -228,9 +238,38 @@ tr:hover {
 }
 
 /*---- FORMS -------*/
-form{
-/*   width: 100%; */
+form,
+.form {
+  background: var(--form-name-background);
+  border-radius: 4px;
 }
+fieldset {
+  border: none;
+}
+legend {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.form__label {
+  
+}
+
+.form__input {
+  font-size: 1.1rem;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form__input--submit {
+  margin: 16px 0;
+  cursor: pointer;
+  background: var(--header-color);
+}
+
 .transaction-filters{
   display: flex;
   flex-wrap: wrap;
