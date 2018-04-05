@@ -1,63 +1,39 @@
 <h1 class="text-center">
   {{title}}
 </h1>
-<form class="filters">
-  <fieldset class="transaction-filters">
+<form class="form">
+  <fieldset>
     <legend>
       Filtry:
     </legend>
     
-    <div class="input">
-      <span class="input-name">
-        <label for="category">
-          Kategoria 
-        </label>
-      </span>
-      <select class="input-field" name="category" id="category">
-        <option value=''>Wszystkie</option>
-          {{#each categories}} 
-             <option value='{{this._id}}' {{this.selected}} >{{this.name}}</option>
-          {{/each}}
-      </select>
-    </div>
+    <label for="category" class="form__label">Kategoria </label>
+    <select class="form__input" name="category" id="category">
+      <option value=''>Wszystkie</option>
+        {{#each categories}} 
+           <option value='{{this._id}}' {{this.selected}} >{{this.name}}</option>
+        {{/each}}
+    </select>
     
-    <div class="input">
-      <span class="input-name">
-        <label for="sort">
-          Sortuj
-        </label>
-      </span>
-      <select class="input-field" name="sort" id="sort">
-        <option value='date-des'>data malejąco</option>
-        <option value='date-asc'>data rosnąco</option>
-        <option value='sum-asc'>kwota rosnąco</option>
-        <option value='sum-des'>kwota malejąco</option>
-      </select>
-    </div> 
+    <label for="sort"  class="form__label">Sortuj</label>
+    <select class="form__input" name="sort" id="sort">
+      <option value='date-des'>data malejąco</option>
+      <option value='date-asc'>data rosnąco</option>
+      <option value='sum-asc'>kwota rosnąco</option>
+      <option value='sum-des'>kwota malejąco</option>
+    </select>
     
-    <div class="input">
-      <span class="input-name">
-        <label for="range">
-          Zakres
-        </label>
-      </span>
-      <select class="input-field" name="range" id="range">
-        <option value='this-week'>bieżący tydzień</option>
-        <option value='this-month'>ten miesiąc</option>
-        <option value='last-3-months'>ostatnie 3 miesiace</option>
-      </select>
-    </div>
+    <label for="range"  class="form__label">Zakres</label>
+    <select class="form__input" name="range" id="range">
+      <option value='this-week'>bieżący tydzień</option>
+      <option value='this-month'>ten miesiąc</option>
+      <option value='last-3-months'>ostatnie 3 miesiace</option>
+    </select>
+
+    <label for="description"  class="form__label">Opis</label>
+    <input class="form__input" type="text" name="description" id="description" value="{{query.description}}" placeholder="wpisz coś">
     
-    <div class="input">
-      <span class="input-name">
-        <label for="description">
-          Opis
-        </label>
-      </span>
-      <input class="input-field" type="text" name="description" id="description" value="{{query.description}}" placeholder="wpisz coś">
-    </div>
-    
-    <button type="submit" class="input-name btn-submit">Szukaj</button>
+    <button type="submit" class="form__input form__input--submit">Szukaj</button>
   </fieldset> 
     
 </form>

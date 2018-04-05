@@ -5,42 +5,25 @@
    Bilans miesiąca: {{bilans}} zł
  </h2>
  
-<div class="row">
-  <div class="column">
-    <table class="home-table">
-      <thead>
-        <tr>
-          <th class="align-left"> Wpływy:</th>
-          <th> {{incomes.total}} zł</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each incomes.categories}}
-        <tr>
-          <td>{{this.name}}</td>
-          <td class="currency">{{this.sum}} zł</td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </div>
-  <div class="column">
-    <table class="home-table">
-      <thead>
-        <tr>
-          <th class="align-left"> Wydatki:</th>
-          <th> {{outcomes.total}} zł</th>
-        </tr>
-      </thead>
-      <tbody>
-      {{#each outcomes.categories}}
-      <tr>
-        <td>{{this.name}}</td>
-        <td class="currency">{{this.sum}} zł</td>
-      </tr>
-      {{/each}}
-      </tbody>
-    </table>
-  </div>
-</div>
-
+<table class="table">
+    <tr>
+      <th class="table__header"> Wpływy:</th>
+      <th class="table__header"> {{incomes.total}} zł</th>
+    </tr>
+    {{#each incomes.categories}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td class="currency">{{this.sum}} zł</td>
+    </tr>
+    {{/each}}
+    <tr>
+      <th class="table__header"> Wydatki:</th>
+      <th class="table__header"> {{outcomes.total}} zł</th>
+    </tr>
+  {{#each outcomes.categories}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td class="currency">{{this.sum}} zł</td>
+    </tr>
+  {{/each}}
+</table>
