@@ -53,7 +53,7 @@
     {{#each transactions}}
       <tr class="clickable" data-url="{{this.url}}">
         <td class="table__data align-center">{{this.shortDate}}</td>
-        <td class="table__data align-left">
+        <td class="table__data table__data--wrapped align-left">
           {{#if this.description}}
             <span class="mobile">
               {{this.description}}<br/>

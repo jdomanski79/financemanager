@@ -201,6 +201,11 @@ header {
   padding: 10px;
   white-space: nowrap;
 }
+
+.table__data--wrapped {
+  white-space: normal;
+}
+
 tr:nth-child(even){
   background-color: #f2f2f2;
 }
