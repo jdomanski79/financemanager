@@ -1,27 +1,27 @@
 <table class="table">
   <tr>
     <th class="table__header table__header--fixed">Data</th>
-    <td> {{transaction.shortDate}}</td>
+    <td class="table__data"> {{transaction.shortDate}}</td>
   </tr>
   <tr>
     <th class="table__header table__header--fixed">Kwota</th>
-    <td>{{transaction.sum}}</td>
+    <td class="table__data">{{transaction.sum}}</td>
   </tr>
   <tr>
     <th class="table__header table__header--fixed">Kategoria</th>
-    <td>{{transaction.category.name}}</td>
+    <td class="table__data">{{transaction.category.name}}</td>
   </tr>
   <tr>
     <th class="table__header table__header--fixed">Opis</th>
-    <td>{{transaction.description}}</td>
+    <td class="table__data">{{transaction.description}}</td>
   </tr>
   <tr>
     <th class="table__header table__header--fixed">Utworzone przez</th>
-    <td>{{transaction.createdBy.name}}</td>
+    <td class="table__data">{{transaction.createdBy.name}}</td>
   </tr>
   <tr>
     <th class="table__header table__header--fixed">Edytowane</th>
-    <td>{{transaction.editedBy}} {{transaction.editedAt}}</td>
+    <td class="table__data">{{transaction.editedBy}} {{transaction.editedAt}}</td>
   </tr>
 </table>
 

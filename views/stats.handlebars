@@ -2,49 +2,49 @@
 
 </h2>
 
-<table class='stats'>
+<table class='table'>
   <caption>
     Statystyki
   </caption>
   <thead>
     <tr>
-      <th>
+      <th class="table__header">
       
       </th>
-      <th>
+      <th class="table__header">
         I
       </th>
-      <th>
+      <th class="table__header">
         II
       </th>
-      <th>
+      <th class="table__header">
         III
       </th>
-      <th>
+      <th class="table__header">
         IV
       </th>
-      <th>
+      <th class="table__header">
         V
       </th>
-      <th>
+      <th class="table__header">
         VI
       </th>
-      <th>
+      <th class="table__header">
         VII
       </th>
-      <th>
+      <th class="table__header">
         VIII
       </th>
-      <th>
+      <th class="table__header">
         IX
       </th>
-      <th>
+      <th class="table__header">
         X
       </th>
-      <th>
+      <th class="table__header">
         XI
       </th>
-      <th>
+      <th class="table__header">
         XII
       </th>
       
@@ -57,7 +57,7 @@
   {{#each stats.incomes.categories}}  
     <tr>
      {{#each this}}
-       <td>
+       <td class="table__data">
          {{this}}
        </td>
       {{/each}}
@@ -67,11 +67,11 @@
   <!--  Posumowanie wpływów -->
   <thead>
     <tr>
-      <th>
+      <th class="table__header">
         Wpływy
       </th>
     {{#each stats.incomes.monthSum}}
-      <th>
+      <th class="table__header">
         {{this}}
       </th>
     {{/each}}
@@ -83,7 +83,7 @@
   {{#each stats.outcomes.categories}}  
     <tr>
      {{#each this}}
-      <td>
+      <td class="table__data">
         {{this}}
       </td>
       {{/each}}
@@ -93,11 +93,11 @@
   <!-- podsumowanie wydatków   -->
   <thead>
     <tr>
-      <th>
+      <th class="table__header">
         Wydatki
       </th>
     {{#each stats.outcomes.monthSum}}
-      <th>
+      <th class="table__header">
         {{this}}
       </th>
     {{/each}}

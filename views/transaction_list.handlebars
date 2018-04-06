@@ -39,21 +39,21 @@
 </form>
 
 <!-- <main> -->
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th style="width:2em">Data</th>
-        <th class="desktop">Kategoria</th>
-        <th class="mobile">Opis</th>
-        <th style="width: 5em">Kwota</th>
-        <th class="desktop">Opis</th>
-        <th class="desktop">Kto</th>
+        <th class="table__header" style="width:2em">Data</th>
+        <th class="table__header desktop">Kategoria</th>
+        <th class="table__header mobile">Opis</th>
+        <th class="table__header" style="width: 5em">Kwota</th>
+        <th class="table__header desktop">Opis</th>
+        <th class="table__header desktop">Kto</th>
       </tr>
     </thead>
     {{#each transactions}}
       <tr class="clickable" data-url="{{this.url}}">
-        <td class="align-center">{{this.shortDate}}</td>
-        <td class="align-left">
+        <td class="table__data align-center">{{this.shortDate}}</td>
+        <td class="table__data align-left">
           {{#if this.description}}
             <span class="mobile">
               {{this.description}}<br/>
@@ -63,9 +63,9 @@
             {{this.category.name}}
           </span>
         </td>
-        <td class="currency">{{this.currency}}</td>
-        <td class="desktop">{{this.description}}</td>
-        <td class="align-center desktop">{{this.createdBy.name}}</td>
+        <td class="table__data currency">{{this.currency}}</td>
+        <td class="table__data desktop">{{this.description}}</td>
+        <td class="table__data align-center desktop">{{this.createdBy.name}}</td>
       </tr>
     {{/each}}
 </table>
