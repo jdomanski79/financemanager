@@ -214,21 +214,10 @@ tr:hover {
   background-color: #ddd;
 }
 
-.stats td:not(:first-child),
-.stats th:not(:first-child) {
-  text-align: right;
+.clickable {
+  cursor: pointer;
 }
-.stats tr:first-child {
-  text-align: center;
-}
-/* td p {
-  line-height: 0.9;
-} */
-.categories-table td,
-.home-table td {
- 
-  padding-left: 50px;
-}
+
 .mobile-category {
   font-size: 12px;
   font-weight: bold;
@@ -276,7 +265,19 @@ legend {
   background: var(--header-color);
 }
 
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  display: inline-block;
+  
+  text-decoration: none;
+  margin : 20px;
+  text-align: center;
+  width: 100px;
+  padding: 5px;
 
+}
 /* Duży EKRAN */
 @media screen and (min-width: 768px){
   .container {

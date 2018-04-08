@@ -1,18 +1,18 @@
 
-<table class="categories-table">
+<table class="table">
   <caption>Kategorie</caption>
   <thead>
     <tr>
-      <th colspan="2">Wpływy</th>
+      <th class="table__header" colspan="2">Wpływy</th>
     </tr>
   </thead>
   <tbody>
     {{#each data.incomes}}
     <tr>
-      <td>
+      <td class="table__data">
         {{this.name}}
       </td> 
-      <td>
+      <td class="table__data">
         <a href='{{this.url}}'>Edytuj</a>
       </td>
     </tr>
@@ -20,16 +20,16 @@
   </tbody>
   <thead>
     <tr>
-      <th colspan="2">Wydatki</th>
+      <th class="table__header" colspan="2">Wydatki</th>
     </tr>
   </thead>
   <tbody>
     {{#each data.outcomes}}
     <tr>
-      <td>
+      <td class="table__data">
         {{this.name}}
       </td> 
-      <td>
+      <td class="table__data">
         <a href='{{this.url}}'>Edytuj</a>
       </td>
     </tr>

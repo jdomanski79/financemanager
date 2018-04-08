@@ -24,7 +24,11 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect(config.mongoURI);
+mongoose.connect(config.mongoURI)
+  .catch(error => {
+    console.error('Database connection error!!!', error);
+
+  });
 
 const db = mongoose.connection;
 //mongoose.set('debug', true);

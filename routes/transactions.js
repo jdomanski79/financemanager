@@ -46,6 +46,10 @@ router.route("/transaction/create")
 
 router.route("/transaction/:url")
   .get(transactionController.transaction_detail_get);
+
+router.route("transaction/:url/update")
+  .get(transactionController.transaction_update_get)
+  .post(transactionController.transaction_update_post);
              
 
 // === CATEGORIES ROUTES ===

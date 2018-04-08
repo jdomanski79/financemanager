@@ -11,8 +11,6 @@ const transactionSchema = new Schema({
   sum            : { type: Number, set: sum => sum * 100},
   description    : { type: String, text: true},
   createdBy      : { type: Schema.Types.ObjectId, ref: "User"},
-  editedBy       : { type: Schema.Types.ObjectId, ref: "User"},
-  editedAt       : { type: Date}
 });
 
 // transactionSchema.index = ({description: 1}, {name: "description"});
