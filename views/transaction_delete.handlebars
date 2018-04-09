@@ -1,0 +1,32 @@
+<table class="table">
+  <tr>
+    <th class="table__header table__header--fixed">Data</th>
+    <td class="table__data"> {{transaction.shortDate}}</td>
+  </tr>
+  <tr>
+    <th class="table__header table__header--fixed">Kwota</th>
+    <td class="table__data">{{transaction.sum}}</td>
+  </tr>
+  <tr>
+    <th class="table__header table__header--fixed">Kategoria</th>
+    <td class="table__data">{{transaction.category.name}}</td>
+  </tr>
+  <tr>
+    <th class="table__header table__header--fixed">Opis</th>
+    <td class="table__data">{{transaction.description}}</td>
+  </tr>
+  <tr>
+    <th class="table__header table__header--fixed">Utworzone przez</th>
+    <td class="table__data">{{transaction.createdBy.name}}</td>
+  </tr>
+</table>
+
+<form method="post" class="form">
+  <h2>
+    Czy napewno usunąć transakcję?
+  </h2>
+
+  <button type="submit" class="form__input form__input--submit">Usuń</button>
+</form>
+
+

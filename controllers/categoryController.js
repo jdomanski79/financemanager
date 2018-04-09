@@ -81,7 +81,6 @@ exports.category_detail_get = (req, res, next) => {
 
 //===========================================
 exports.category_update_get = (req, res, next) => {
-  console.log('update get');
   Category.findById(req.params.id, (err, category) => {
     if (err) return next(err);
     res.render('category_form', {title: "Edytuj kategorię", category: category});

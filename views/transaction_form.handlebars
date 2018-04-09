@@ -5,16 +5,16 @@
     </legend>    
     
     <label for="date" class="form__label">Data</label>
-    <input class="form__input" type="date" name="date" id="date" value="{{date}}" autofocus>
+    <input class="form__input" type="date" name="date" id="date" value="{{transaction.date}}" autofocus>
     
     <label for="sum" class="form__label">Kwota</label>
-    <input class="form__input" type="number" step="0.01" name="sum" id="sum" maxlength="8"> 
+    <input class="form__input" type="number" step="0.01" name="sum" id="sum" maxlength="8" value="{{transaction.sum}}"> 
 
 
     <label for="category" class="form__label">Kategoria</label>
     <select class="form__input" name="category" id="category">
      {{#each categories}} 
-       <option value='{{this._id}}'>{{this.name}}</option>
+       <option value='{{this._id}}' {{selected ../transaction.category this._id}}>{{this.name}} </option>
      {{/each}}
     </select>
 

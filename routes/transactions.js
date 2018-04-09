@@ -47,10 +47,16 @@ router.route("/transaction/create")
 router.route("/transaction/:url")
   .get(transactionController.transaction_detail_get);
 
-router.route("transaction/:url/update")
+router.route("/transaction/:url/update")
   .get(transactionController.transaction_update_get)
   .post(transactionController.transaction_update_post);
+
+router.route("/transaction/:url/delete")
+  .get(transactionController.transaction_delete_get)
+  .post(transactionController.transaction_delete_post);
              
+
+
 
 // === CATEGORIES ROUTES ===
 // GET request to list categories

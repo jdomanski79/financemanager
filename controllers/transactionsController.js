@@ -94,7 +94,9 @@ exports.transaction_create_get = (req, res, next) => {
   // console.log(categories);
   Category.find({}, (err, categories)=>{
     if (err) return next(err);
-    res.render('transaction_form', {title: 'Nowa transakcja', categories: categories, date: new Date().toISOString().slice(0,10)});
+    res.locals.categories = categories;
+    res.locals.transaction = {date: new Date().toISOString().slice(0,10)};
+    res.render('transaction_form', {title: 'Nowa transakcja'});
   });
 };
 
@@ -147,11 +149,73 @@ exports.transaction_detail_get =[
       .populate("createdBy", "name")
       .exec( (err, transaction) => {
         if (err) return next(err);
-        res.locals.transaction = transaction;
+        res.locals.transaction = transaction.toObject({virtuals: true});
+        res.locals.transaction.sum = waluta(transaction.sum);
         res.render("transaction_detail");
     })
   }
 ]
+
+exports.transaction_update_get = [
+  (req, res, next) => {
+    let transaction = Transaction
+      .findById(req.params.url)
+      .populate("createdBy", "name")
+      .exec();
+    
+    let categories = Category
+      .find({})
+      .exec();
+    
+    Promise.all([transaction, categories])
+      .then(results => {
+        res.locals.categories = results[1];
+        res.locals.transaction = results[0].toObject();
+        res.locals.transaction.date = results[0].date.toISOString().slice(0,10);
+        res.locals.transaction.sum = results[0].sum/100;
+        //res.send(results[0]);
+        res.render("transaction_form");
+      })
+      .catch(err => next(err));
+    
+    
+  }
+]
+
+exports.transaction_update_post = [
+  (req, res, next) => {
+     const updatedTransaction = {
+        date        : req.body.date,
+        sum         : req.body.sum,
+        category    : req.body.category,
+        description : req.body.description,
+        createdBy   : req.session.user._id
+    };
+    
+    Transaction.findByIdAndUpdate(req.params.url, updatedTransaction)
+      .exec()
+      .then(res.redirect("/transaction/" +  req.params.url))
+      .catch(err => next(err));
+  }
+]
+
+exports.transaction_delete_get = (req, res, next) =>
+  { Transaction.findById(req.params.url)
+      .populate("category", "name")
+      .populate("createdBy", "name")
+      .exec( (err, transaction) => {
+        if (err) return next(err);
+        res.locals.transaction = transaction.toObject({virtuals: true});
+        res.locals.transaction.sum = waluta(transaction.sum);
+        res.render("transaction_delete");
+    })
+  }
+
+exports.transaction_delete_post = (req, res, next) =>
+  {
+    Transaction.findByIdAndRemove(req.params.url)
+      .then(res.redirect("/transactions"));
+}
 
 // ==== helper functions ===
 
