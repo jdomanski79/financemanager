@@ -1,11 +1,12 @@
 <h1 class="text-center">
   {{title}}
 </h1>
-<form class="form">
+
+<label for="show-filters-checkbox" class="show-filters-checkbox">Filtry</label>
+<input type="checkbox" id="show-filters-checkbox">
+
+<form class="form hidden">
   <fieldset>
-    <legend>
-      Filtry:
-    </legend>
     
     <label for="category" class="form__label">Kategoria </label>
     <select class="form__input" name="category" id="category">
@@ -51,7 +52,7 @@
       </tr>
     </thead>
     {{#each transactions}}
-      <tr class="clickable" data-url="{{this.url}}">
+      <tr class="js-clickable" data-url="{{this.url}}">
         <td class="table__data align-center">{{this.shortDate}}</td>
         <td class="table__data table__data--wrapped align-left">
           {{#if this.description}}

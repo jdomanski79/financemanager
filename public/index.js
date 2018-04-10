@@ -14,8 +14,8 @@
   })
   
   // table scripts
-  const trClickable = document.querySelectorAll(".clickable");
-  trClickable.forEach( tr => {
+  const clickableElement = document.querySelectorAll(".js-clickable");
+  clickableElement.forEach( tr => {
     tr.addEventListener("click", () => {
       location.href = tr.dataset.url;
     })

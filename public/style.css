@@ -278,6 +278,23 @@ a.button {
   padding: 5px;
 
 }
+/* .hidden {
+  display: none;
+} */
+
+.show-filters-checkbox {
+  cursor: pointer;
+}
+
+input[type=checkbox]:not(:checked) ~ .form {
+  display: none;
+}
+.show-filters-checkbox:checked:after {
+  content: "\21D3";
+  font-size: 20px;
+
+}
+
 /* Duży EKRAN */
 @media screen and (min-width: 768px){
   .container {
