@@ -24,7 +24,10 @@ exports.index = (req, res, next) => {
         res.locals.bilans = found.incomes[0].total;
         res.locals.incomes = {
           total: waluta(found.incomes[0].total),
-          categories: found.incomes[0].categories.map(c => ({name: c.name, sum: waluta(c.sum)}))
+          categories: found.incomes[0].categories.map(c => {
+            c.sum = waluta(c.sum);
+            return c;
+          })
         }
       } else {
         res.locals.bilans = 0;
@@ -35,7 +38,10 @@ exports.index = (req, res, next) => {
         res.locals.bilans -= found.outcomes[0].total;
         res.locals.outcomes = {
           total: waluta(found.outcomes[0].total),
-          categories: found.outcomes[0].categories.map(c => ({name: c.name, sum: waluta(c.sum)}))
+          categories: found.outcomes[0].categories.map(c => {
+            c.sum = waluta(c.sum);
+            return c;
+          })
         }
       } else {
         res.locals.outcomes = {total : 0}
@@ -247,7 +253,11 @@ function getCategoriesByType (date, categoryType) {
               },
               {
                 $group: {
-                  _id: "$categoryDoc.name", 
+                  _id: {
+                          "name": "$categoryDoc.name", 
+                          "id"  : "$categoryDoc._id"
+                  },
+                          
                   categorySum: {$sum: "$sum"},
                 },
               },
@@ -258,7 +268,7 @@ function getCategoriesByType (date, categoryType) {
                 $group: {
                   _id: null,
                   total: {$sum: "$categorySum"},
-                  categories: {$push: {name: "$_id", sum: "$categorySum"}}
+                  categories: {$push: {name: "$_id.name", sum: "$categorySum", id :"$_id.id"}}
                 }
               }
   ])

@@ -89,6 +89,6 @@ app.use((err, req, res, next) => {
 
 // listen 
 //==================
-var listener = app.listen(3000, function () {
+ var listener = app.listen(8080, "127.0.0.1", function () {
   console.log('Aplikacja nasłuchuje na porcie %s', listener.address().port);
 });
