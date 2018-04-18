@@ -11,7 +11,7 @@
       <th class="table__header"> {{incomes.total}} zł</th>
     </tr>
     {{#each incomes.categories}}
-    <tr class="js-clickable" data-url="/transactions/?category={{this.id}}">
+    <tr class="js-clickable" data-url="/transactions/?category={{this.id}}&range=this-month">
       <td class="table__data">{{this.name}}</td>
       <td class="currency table__data">{{this.sum}} zł</td>
     </tr>
@@ -21,7 +21,7 @@
       <th class="table__header"> {{outcomes.total}} zł</th>
     </tr>
   {{#each outcomes.categories}}
-    <tr class="js-clickable" data-url="/transactions/?category={{this.id}}">
+    <tr class="js-clickable" data-url="/transactions/?category={{this.id}}&range=this-month">
       <td class="table__data" >{{this.name}}</td>
       <td class="currency table__data">{{this.sum}} zł</td>
     </tr>

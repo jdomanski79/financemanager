@@ -9,6 +9,7 @@ const async                    = require('async');
 // HOME ROUTE
 exports.index = (req, res, next) => {
   const today = new Date();//Date("2018-01-01");
+  
   async.parallel({
     outcomes: function (cb) {
       getCategoriesByType(today, "outcome").exec(cb)
@@ -48,6 +49,8 @@ exports.index = (req, res, next) => {
       };
        
       res.locals.bilans = waluta(res.locals.bilans);
+      res.locals.month = today.getMonth();
+      res.locals.year = today.getFullYear();
       
     
     res.render("home", {title: "Strona domowa"});
@@ -57,14 +60,34 @@ exports.index = (req, res, next) => {
 
 // TRANSACTIONS LIST
 exports.list = (req, res, next) => {
+  
   let query = {};
+
   if (req.query.description){
     query.$text = {$search: req.query.description};
   }
   if (req.query.category) {
     query.category = req.query.category;
   }
-  console.log(query);
+  
+  if (req.query.range) {
+    const today = new Date();
+    const currentMonth = today.getMonth();
+    
+    if (req.query.range == "this-month") {
+      
+      const firstDayOfMonth = new Date();
+      firstDayOfMonth.setDate(1);
+      firstDayOfMonth.setHours(0,0,0,0);
+      
+      const firstDayOfNextMonth = new Date();
+      firstDayOfNextMonth.setHours(0,0,0,0);
+      firstDayOfNextMonth.setMonth(firstDayOfNextMonth.getMonth() + 1, 1);
+      
+      query.created = {$gte: firstDayOfMonth, $lt : firstDayOfNextMonth};
+    }
+  }
+  console.log("Query object", query);
   async.parallel({
     categories: cb => {
       Category.find({}).exec(cb);
